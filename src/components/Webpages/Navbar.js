@@ -32,7 +32,7 @@ export const Navbar = () => {
       <Header />
       <Home />
       <Services />
-      <Portfolio />
+      
       
       <Testimonial />
      

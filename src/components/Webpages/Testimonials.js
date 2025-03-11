@@ -1,7 +1,6 @@
 // import React, { useState } from 'react';
-// import CEO from '../../assest/gowri.jpg'
+// import CEO from '../../assest/gowri.jpeg'
 // import Graper from '../../assest/Shanker.jpg'
-// import Developer from '../../assest/Aravindan.jpg'
 
 // const testimonials = [
 //   {
@@ -12,14 +11,7 @@
 //     feedback:
 //       "A CEO (Chief Executive Officer) is the highest-ranking executive in a company, responsible for overall strategy and decision-making. They lead the organization, ensuring business goals are met while balancing stakeholders' interests. A CEO plays a critical role in setting the vision and driving the company's growth and success.",
 //   },
-//   {
-//     name: "Aravindan",
-//     role: "FULL STACK DEVELOPER",
-//     image: Developer,
-//     rating: "",
-//     feedback:
-//       "A full-stack developer is proficient in both front-end and back-end development, creating complete web applications. They handle everything from designing user interfaces to managing databases and server-side logic.",
-//   },
+//  
 //   {
 //     name: "Shankar",
 //     role: "PHOTO GRAPHER",
@@ -97,7 +89,6 @@
 import React, { useState } from 'react';
 import CEO from '../../assest/gowri.jpg';
 import Graper from '../../assest/Shanker.jpg';
-import Developer from '../../assest/Aravindan.jpg';
 
 const testimonials = [
   {
@@ -106,13 +97,6 @@ const testimonials = [
     image: CEO,
     feedback:
       "A CEO (Chief Executive Officer) is the highest-ranking executive in a company, responsible for overall strategy and decision-making. They lead the organization, ensuring business goals are met while balancing stakeholders' interests.",
-  },
-  {
-    name: "Aravindan",
-    role: "FULL STACK DEVELOPER",
-    image: Developer,
-    feedback:
-      "A full-stack developer is proficient in both front-end and back-end development, creating complete web applications. They handle everything from designing user interfaces to managing databases and server-side logic.",
   },
   {
     name: "Shankar",
@@ -141,7 +125,7 @@ export const Testimonial = () => {
   const { name, role, image, feedback } = testimonials[currentIndex];
 
   return (
-    <div className="relative z-10 py-10 px-5 top-6 bg-white h-full">
+    <div className="relative z-10 py-10 px-5 top-16 shadow-lg bg-white h-full">
       <div className="container mx-auto text-center">
         <h3 className="text-2xl font-bold mb-4 text-blue-500">Our Team</h3>
         <div

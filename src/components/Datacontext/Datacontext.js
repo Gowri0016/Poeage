@@ -12,7 +12,6 @@ import pricing from '../../assest/pricing.png'
 import Delivery from '../../assest/timing.png'
 import Support from '../../assest/support.png'
 import Logo from '../../assest/logo.png'
-import { Link } from "react-router-dom";
 
 
 
@@ -120,92 +119,8 @@ const service = [
 ]
 
 const portfolio = [
-  
-  {
-    image : "jhvj",
-    title : `GU DataLogic`,
-    content : `A Poeage software company builds innovative, user-friendly solutions using cutting-edge technology to meet business needs. We focus on quality, agility, and custom software development to drive efficiency and growth.`,
-    link : `https://gudatalogic.com`,
-},
-  {
-    image : "hfyt",
-    title : `Luxurya Tours`,
-    content : `A Poeage software company builds innovative,, user-friendly solutions using cutting-edge technology to meet business needs. We focus on quality, agility, and custom software development to drive efficiency and growth.`,
-    link:``,
-  },
-  {
-    image : "hfyt",
-    title : `Robust Mobile Solutions`,
-    content : `A Poeage software company builds innovative, user-friendly solutions using cutting-edge technology to meet business needs. We focus on quality, agility, and custom software development to drive efficiency and growth.`,
-    link:``,
-  },
-  {
-    image : "hfyt",
-    title : `Building Brand Identity`,
-    content : `A Poeage software company builds innovative`,
-    link:``,
-
-  },
-  {
-    image : "hfyt",
-    title : `Tailored Tech Innovations`,
-    content : `A Poeage software company builds innovative`,
-    link:``,
-
-  },{
-    image : "hfyt",
-    title : `Comprehensive Digital Makeover`,
-    content : `A Poeage software company builds innovative`,
-    link:``,
-
-  },
   {
     pricingplane : [
-      {
-        basic: "✅Basic",
-      amount: "₹6999",
-      space: "✅Unlimited GB space",
-      domain: "✅2 Domain Names",
-      ssl: "✅SSL Certificate",
-      backup: "✅Daily Backup",
-      templete: "✅1 Templates",
-      email: "✅Free Email",
-      database: "✅10 Databases",
-      unlimitedemail: "✅3 Email Address",
-      support: "✅Live Support",
-      order: "✅Order Now",
-
-      },
-      {
-        basic: "✅Standard",
-      amount: "₹11999",
-      space: "✅Unlimited GB space",
-      domain: "✅5 Domain Names",
-      ssl: "✅SSL Certificate",
-      backup: "✅Daily Backup",
-      templete: "✅3 Templates",
-      email: "✅Free Email",
-      database: "✅20 Databases",
-      unlimitedemail: "✅7 Email Address",
-      support: "✅Live Support",
-      order: "✅Order Now",
-
-      },
-      {
-        basic: "✅Premium",
-      amount: "₹33399",
-      space: "✅Unlimited GB space",
-      domain: "✅10 Domain Names",
-      ssl: "✅SSL Certificate",
-      backup: "✅Daily Backup",
-      templete: "✅5 Templates",
-      email: "✅Free Email",
-      database: "✅50 Databases",
-      unlimitedemail: "✅Unlimited Email Address",
-      support: "✅Live Support",
-      order: "✅Order Now",
-
-      },
     ]
   }
 ]
