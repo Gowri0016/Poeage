@@ -22,10 +22,10 @@ export const Internmail = () => {
 
     emailjs
       .send(
-        "service_wiicwjt",            // Replace with your actual EmailJS service ID
-        "template_0d57wo5",           // Replace with your actual template ID
+        "service_wiicwjt",
+        "template_0d57wo5",
         formData,
-        "8F9ua55d2Ogw-Dtj4"           // Replace with your actual user/public key
+        "8F9ua55d2Ogw-Dtj4"
       )
       .then(() => {
         alert("Message sent successfully!");
@@ -44,76 +44,85 @@ export const Internmail = () => {
       });
   };
 
+  const inputFields = [
+    { label: "Full Name", name: "name" },
+    { label: "Email Address", name: "email", type: "email" },
+    { label: "Contact Number", name: "contactNumber" },
+    { label: "Course", name: "course" },
+    { label: "College Name", name: "collegeName" },
+  ];
+
   return (
-    <div className="py-2 flex items-center justify-center">
-      <div className="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-4xl md:max-w-6xl border border-blue-100">
-        <h2 className="text-4xl font-bold text-blue-800 text-center mb-10 tracking-tight">
-          Internship Application
+    <div className="flex items-center justify-center animate-fadeIn">
+      <div className="bg-white/90 p-4 rounded-3xl shadow-2xl w-full max-w-2xl md:max-w-5xl border border-blue-200">
+        <h2 className="text-2xl font-bold text-blue-800 text-center mb-8 tracking-tight drop-shadow">
+           Internship Application
         </h2>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { label: "Full Name", name: "name" },
-            { label: "Email Address", name: "email", type: "email" },
-            { label: "Contact Number", name: "contactNumber" },
-            { label: "Course", name: "course" },
-            { label: "College Name", name: "collegeName" },
-          ].map(({ label, name, type = "text" }) => (
-            <div key={name}>
-              <label htmlFor={name} className="block text-gray-700 font-semibold mb-2">
-                {label}
-              </label>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {inputFields.map(({ label, name, type = "text" }) => (
+            <div key={name} className="relative">
               <input
                 id={name}
                 name={name}
                 type={type}
                 value={formData[name]}
                 onChange={handleChange}
-                placeholder={`Enter your ${label.toLowerCase()}`}
-                className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                 required
+                className="peer w-full px-4 pt-6 pb-2 text-gray-800 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-transparent"
+                placeholder={label}
               />
+              <label
+                htmlFor={name}
+                className="absolute left-4 top-2 text-sm text-gray-600 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 transition-all"
+              >
+                {label}
+              </label>
             </div>
           ))}
 
           {/* Gender */}
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Gender</label>
-            <div className="flex gap-6">
+          <div className="col-span-1">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Gender
+            </label>
+            <div className="flex flex-wrap gap-4 md:flex-row">
               {["Male", "Female"].map((g) => (
-                <label key={g} className="inline-flex items-center gap-2 text-gray-600 font-medium">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value={g}
-                    checked={formData.gender === g}
-                    onChange={handleChange}
-                    className="accent-blue-600"
-                    required
-                  />
+                <button
+                  key={g}
+                  type="button"
+                  onClick={() => handleChange({ target: { name: "gender", value: g } })}
+                  className={`px-4 py-2 rounded-full border font-medium transition ${
+                    formData.gender === g
+                      ? "bg-blue-600 text-white border-blue-700"
+                      : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                  }`}
+                >
                   {g}
-                </label>
+                </button>
               ))}
             </div>
           </div>
 
           {/* Mode */}
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">Mode</label>
-            <div className="flex gap-6">
+          <div className="col-span-1">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Mode
+            </label>
+            <div className="flex flex-wrap gap-4 md:flex-row">
               {["Online", "Offline"].map((mode) => (
-                <label key={mode} className="inline-flex items-center gap-2 text-gray-600 font-medium">
-                  <input
-                    type="radio"
-                    name="online"
-                    value={mode}
-                    checked={formData.online === mode}
-                    onChange={handleChange}
-                    className="accent-blue-600"
-                    required
-                  />
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => handleChange({ target: { name: "online", value: mode } })}
+                  className={`px-4 py-2 rounded-full border font-medium transition ${
+                    formData.online === mode
+                      ? "bg-blue-600 text-white border-blue-700"
+                      : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                  }`}
+                >
                   {mode}
-                </label>
+                </button>
               ))}
             </div>
           </div>
@@ -122,7 +131,7 @@ export const Internmail = () => {
           <div className="md:col-span-2 text-center mt-8">
             <button
               type="submit"
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 px-8 rounded-full font-semibold shadow-lg hover:scale-105 transition transform duration-200"
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 px-10 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-105 transition duration-200"
             >
               Submit Application
             </button>
