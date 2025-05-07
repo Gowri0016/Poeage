@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { DContext } from "../Datacontext/Datacontext";
+import logo from '../../assest/logo.png'
 import { motion } from "framer-motion";
 import {
   MailIcon,
@@ -100,14 +101,15 @@ const Footer = () => {
         </div>
       </motion.div>
 
-      {/* Bottom Footer */}
-      <motion.div
-        className="text-center py-4 text-gray-500 text-sm relative z-10"
+     {/* Bottom Footer */}
+     <motion.div
+        className="flex flex-col md:flex-row items-center justify-center gap-4 py-4 text-gray-500 text-sm relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <p>© 2025 Poeage.com — All rights reserved.</p>
+        <img src={logo} alt="Poeage Corporation" className="h-20 w-56 " />
+        <p className="mt-2 md:mt-0">© 2025 Poeage Corporation Pvt. Ltd. All Rights Reserved.</p>
       </motion.div>
     </footer>
   );
