@@ -54,16 +54,25 @@ export const Home = () => {
           );
         })}
       </div>
+{/* Call-to-Action Buttons with 3D Hover Effect */}
+<div className="mt-6 flex flex-col md:flex-row items-center gap-4">
+  <button
+    onClick={handleClick}
+    className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg transform hover:scale-110 hover:rotate-3d"
+  >
+    Request a Design Quote <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
+  </button>
+  
+  <a 
+    href="https://poeage-portfolio.vercel.app/" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg transform hover:scale-110 hover:rotate-3d"
+  >
+    My Creative Portfolio <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
+  </a>
+</div>
 
-      {/* Call-to-Action Button with 3D Hover Effect */}
-      <div className="mt-6">
-        <button
-          onClick={handleClick}
-          className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg transform hover:scale-110 hover:rotate-3d"
-        >
-          Request a Design Quote <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-      </div>
 
       {/* About Us Section */}
       <section className="container mx-auto py-8 px-4 sm:px-6 flex justify-center relative z-10">
