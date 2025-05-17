@@ -29,7 +29,7 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-3">Follow Us</h3>
               <div className="flex space-x-4">
                 <a href="https://www.linkedin.com/in/g-gowri-shankar " className="hover:text-indigo-400"><Linkedin size={28} /></a>
-                <a href="https://www.instagram.com/poeage__com/#" className="hover:text-indigo-400"><Instagram size={28} /></a>
+                <a href="https://www.instagram.com/poeage__com?igsh=MTljMmMyanY4dDlsbw==" className="hover:text-indigo-400"><Instagram size={28} /></a>
                 <a href="https://x.com/PoeageCom?t=_csbreCayXikIYn-JA0hpw&s=09" className="hover:text-indigo-400"><Twitter size={28} /></a>
                 <a href="https://www.facebook.com/people/Poeage/61575953696329/?rdid=X9UYi7Nkcj7AV5ME&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Gcq6JPLpL%2F" className="hover:text-indigo-400"><Facebook size={28} /></a>
               </div>
