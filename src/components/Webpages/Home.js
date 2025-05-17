@@ -43,7 +43,7 @@ export const Home = () => {
             platform === 'Linkedin' ? 'blue-600' : 'pink-500';
           const url = platform === 'Twitter' ? 'https://x.com/PoeageCom' :
             platform === 'Facebook' ? 'https://www.facebook.com/share/1Gcq6JPLpL/' :
-            platform === 'Linkedin' ? 'https://www.linkedin.com/in/poeage/' : 
+            platform === 'Linkedin' ? 'https://www.linkedin.com/in/g-gowri-shankar' : 
           'https://www.instagram.com/poeage__com?igsh=ZG02cDRyMDluNHFk';
 
           return (
