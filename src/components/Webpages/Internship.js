@@ -125,8 +125,11 @@ const InternshipPage = () => {
           </h1>
           <p className="mt-6 text-gray-700 text-lg max-w-3xl mx-auto">
             Join us for a chance to work on real-world projects in the most exciting domains.
-            Learn from industry experts and accelerate your career.
+            Learn from industry experts and accelerate your career. Upon successful completion,
+            interns will receive a certificate from a verified ISO-certified organization,
+            recognized for maintaining international quality standards.
           </p>
+
         </motion.section>
 
         <motion.div
@@ -154,11 +157,10 @@ const InternshipPage = () => {
                 transition={{ duration: 0.4 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`transition-all duration-200 transform py-4 px-8 rounded-2xl text-sm font-medium shadow-lg ${
-                  selectedLanguage === language
+                className={`transition-all duration-200 transform py-4 px-8 rounded-2xl text-sm font-medium shadow-lg ${selectedLanguage === language
                     ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white scale-105 border-2 border-blue-700"
                     : "bg-white text-gray-800 border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600"
-                }`}
+                  }`}
               >
                 {language}
               </motion.button>
@@ -174,19 +176,19 @@ const InternshipPage = () => {
         />
 
         <motion.section
-          className="max-w-4xl mx-auto bg-white border border-blue-200 shadow-lg rounded-xl p-10"
+          className="max-w-max mx-auto border border-blue-200 rounded-xl p-8"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <div className=" text-center">
-          <h1 className="text-3xl py-3">Apply Now </h1>
-          <p className="py-3 p-5">Fill in your details and submit your application to join our internship program.</p>
+            <h1 className="text-3xl py-3">Apply Now </h1>
+            <p className="py-3 p-5">Fill in your details and submit your application to join our internship program.</p>
           </div>
           <form
             onSubmit={handleSubmit}
-            className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900"
+            className=" w-full z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900"
           >
             {[
               { name: "name", label: "Full Name" },
@@ -200,11 +202,10 @@ const InternshipPage = () => {
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
-                  className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
-                    errors[name]
+                  className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${errors[name]
                       ? "border-red-500"
                       : "border-blue-300 focus:ring-blue-400"
-                  } focus:outline-none focus:ring-2 transition duration-150`}
+                    } focus:outline-none focus:ring-2 transition duration-150`}
                   placeholder={label}
                 />
                 {errors[name] && <p className="text-red-600 text-sm mt-1">{errors[name]}</p>}
@@ -219,11 +220,10 @@ const InternshipPage = () => {
                 onChange={handleChange}
                 rows="4"
                 placeholder="Enter your message"
-                className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
-                  errors.message
+                className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${errors.message
                     ? "border-red-500"
                     : "border-blue-300 focus:ring-blue-400"
-                } focus:outline-none focus:ring-2 resize-none transition duration-150`}
+                  } focus:outline-none focus:ring-2 resize-none transition duration-150`}
               />
               {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
             </motion.div>
@@ -234,9 +234,8 @@ const InternshipPage = () => {
                 disabled={status.sending}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
-                  status.sending ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${status.sending ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
               >
                 {status.sending ? "Sending..." : "Send Request"}
               </motion.button>
@@ -247,9 +246,8 @@ const InternshipPage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className={`md:col-span-2 text-center mt-4 ${
-                  status.success ? "text-green-600" : "text-red-600"
-                }`}
+                className={`md:col-span-2 text-center mt-4 ${status.success ? "text-green-600" : "text-red-600"
+                  }`}
               >
                 {status.success
                   ? "✅ Your application has been sent!"

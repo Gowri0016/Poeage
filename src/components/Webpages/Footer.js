@@ -45,7 +45,7 @@ const Footer = () => {
               About Us
             </h6>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Welcome to <span className="text-sky-500 font-semibold">Poeage</span>, your trusted partner in innovative web development and IT solutions.
+              Welcome to <span className="text-sky-500 font-semibold">Poeage IT Solution</span>, your trusted partner in innovative web development and IT solutions.
               Our founder, <span className="text-sky-500 hover:text-sky-300">Mr. Gowrishankar</span>, leads us to redefine digital success.
             </p>
           </div>
@@ -61,7 +61,7 @@ const Footer = () => {
           {/* Company Info */}
           <motion.div variants={itemVariants} className="text-center lg:text-left">
             <img src={logo} alt="Poeage Corporation" className="h-20 w-56 mb-4" />
-            <h2 className="text-3xl font-bold">Poeage Corporation Pvt. Ltd.</h2>
+            <h2 className="text-3xl">Poeage IT Solution.Pvt.Ltd</h2>
             <p className="text-gray-400 mt-2">Leading IT solutions for your business growth.</p>
           </motion.div>
 
@@ -127,7 +127,7 @@ const Footer = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <p>&copy; {new Date().getFullYear()} Poeage Corporation Pvt. Ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Poeage IT Solution Pvt. Ltd. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
