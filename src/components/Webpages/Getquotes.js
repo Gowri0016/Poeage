@@ -18,9 +18,7 @@ const Getquotes = () => {
   const inView = useInView(formRef, { once: true });
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
+    if (inView) controls.start("visible");
   }, [inView, controls]);
 
   const handleChange = (e) => {
@@ -88,13 +86,20 @@ const Getquotes = () => {
   };
 
   return (
-    <div className="bg-white flex items-center justify-center sm:px-6 py-10" ref={formRef}>
+    <div
+      className="bg-transparent flex items-center justify-center sm:px-6 py-10 mt-20"
+      ref={formRef}
+    >
       <motion.div
         initial="hidden"
         animate={controls}
         variants={{
           hidden: { opacity: 0, scale: 0.95 },
-          visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.8, ease: "easeOut" },
+          },
         }}
         className="relative w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-white border border-blue-100 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl overflow-hidden"
       >
@@ -113,17 +118,13 @@ const Getquotes = () => {
           onSubmit={handleSubmit}
           className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900"
         >
+          
           {[
             { name: "name", label: "Full Name" },
             { name: "email", label: "Email", type: "email" },
             { name: "contactNumber", label: "Contact Number" },
           ].map(({ name, label, type = "text" }, index) => (
-            <motion.div
-              key={name}
-              className="w-full"
-              variants={fadeInUp}
-              custom={index + 1}
-            >
+            <motion.div key={name} className="w-full" variants={fadeInUp} custom={index + 1}>
               <label className="block text-sm md:text-base font-medium mb-2">{label}</label>
               <input
                 type={type}
@@ -137,17 +138,11 @@ const Getquotes = () => {
                 } focus:outline-none focus:ring-2 transition duration-150`}
                 placeholder={label}
               />
-              {errors[name] && (
-                <p className="text-red-600 text-sm mt-1">{errors[name]}</p>
-              )}
+              {errors[name] && <p className="text-red-600 text-sm mt-1">{errors[name]}</p>}
             </motion.div>
           ))}
 
-          <motion.div
-            className="md:col-span-2"
-            variants={fadeInUp}
-            custom={4}
-          >
+          <motion.div className="md:col-span-2" variants={fadeInUp} custom={4}>
             <label className="block text-sm md:text-base font-medium mb-2">Message</label>
             <textarea
               name="message"
@@ -161,16 +156,10 @@ const Getquotes = () => {
                   : "border-blue-300 focus:ring-blue-400"
               } focus:outline-none focus:ring-2 resize-none transition duration-150`}
             />
-            {errors.message && (
-              <p className="text-red-600 text-sm mt-1">{errors.message}</p>
-            )}
+            {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
           </motion.div>
 
-          <motion.div
-            className="md:col-span-2 flex justify-center mt-6"
-            variants={fadeInUp}
-            custom={5}
-          >
+          <motion.div className="md:col-span-2 flex justify-center mt-6" variants={fadeInUp} custom={5}>
             <motion.button
               type="submit"
               disabled={status.sending}
