@@ -30,24 +30,24 @@ export const Header = () => {
     };
 
     return (
-        <header className="fixed z-20 w-full bg-white shadow-md text-black">
+        <header className="fixed z-20 w-full bg-gradient-to-r from-cyan-400 to-blue-800 shadow-md text-black">
             <div className="container mx-auto flex justify-between items-center px-4 md:px-8 h-16">
                 {/* Logo */}
-                <a href="/" className="text-lg w-72 h-64 font-bold flex items-center">
+                <a href="/" className="text-lg w-96 h-72 font-bold flex items-center">
                     <img src={navbar.logo} alt="Logo" className="h-10" />
                 </a>
 
                 {/* Desktop Navbar */}
-                <nav className="hidden md:flex items-center space-x-8">
+                <nav className="hidden md:flex items-center text-white space-x-8">
                     <a href="/" className="hover:text-blue-600 transition">
                         {capitalizeFirst(navbar.home)}
                     </a>
 
                     {/* Dropdown Menu */}
-                    <div className="relative" ref={menuRef}>
+                    <div className="relative " ref={menuRef}>
                         <button
                             onClick={() => setMenuOpen((prev) => !prev)}
-                            className="flex items-center gap-1 hover:text-blue-600 transition"
+                            className="flex items-center gap-1 text-white hover:text-blue-600 transition"
                         >
                             <FaBriefcase className="text-lg" />
                             {capitalizeFirst(navbar.menu)}
@@ -72,7 +72,7 @@ export const Header = () => {
                 <div className="md:hidden">
                     <button
                         onClick={toggleMobileMenu}
-                        className="text-2xl text-black focus:outline-none"
+                        className="text-2xl text-white focus:outline-none"
                     >
                         {mobileMenuOpen ? <FaTimes /> : <FaBars />}
                     </button>
