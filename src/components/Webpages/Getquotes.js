@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const Getquotes = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,16 @@ const Getquotes = () => {
 
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ sending: false, success: null });
+
+  const controls = useAnimation();
+  const formRef = useRef(null);
+  const inView = useInView(formRef, { once: true });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView, controls]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -67,92 +78,129 @@ const Getquotes = () => {
       });
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <div className=" bg-white flex items-center justify-center sm:px-6 py-10">
-    <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-white border border-blue-100 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl overflow-hidden">
-      {/* Decorative corners */}
-      <div className="absolute top-0 left-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-100 to-transparent rounded-br-full z-0" />
-      <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tl from-blue-100 to-transparent rounded-tl-full z-0" />
-  
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-6 sm:mb-8 relative z-10">
-        Request a Quote
-      </h1>
-  
-      <form
-  onSubmit={handleSubmit}
-  className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900" // <- increased md gap
->
-  {[
-    { name: "name", label: "Full Name" },
-    { name: "email", label: "Email", type: "email" },
-    { name: "contactNumber", label: "Contact Number" },
-  ].map(({ name, label, type = "text" }) => (
-    <div key={name} className="w-full">
-      <label className="block text-sm md:text-base font-medium mb-2">{label}</label> {/* improved label text on md */}
-      <input
-        type={type}
-        name={name}
-        value={formData[name]}
-        onChange={handleChange}
-        className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
-          errors[name]
-            ? "border-red-500"
-            : "border-blue-300 focus:ring-blue-400"
-        } focus:outline-none focus:ring-2 transition duration-150`}
-        placeholder={label}
-      />
-      {errors[name] && (
-        <p className="text-red-600 text-sm mt-1">{errors[name]}</p>
-      )}
+    <div className="bg-white flex items-center justify-center sm:px-6 py-10" ref={formRef}>
+      <motion.div
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, scale: 0.95 },
+          visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+        }}
+        className="relative w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-white border border-blue-100 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-100 to-transparent rounded-br-full z-0" />
+        <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tl from-blue-100 to-transparent rounded-tl-full z-0" />
+
+        <motion.h1
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-6 sm:mb-8 relative z-10"
+          variants={fadeInUp}
+          custom={0}
+        >
+          Request a Quote
+        </motion.h1>
+
+        <form
+          onSubmit={handleSubmit}
+          className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900"
+        >
+          {[
+            { name: "name", label: "Full Name" },
+            { name: "email", label: "Email", type: "email" },
+            { name: "contactNumber", label: "Contact Number" },
+          ].map(({ name, label, type = "text" }, index) => (
+            <motion.div
+              key={name}
+              className="w-full"
+              variants={fadeInUp}
+              custom={index + 1}
+            >
+              <label className="block text-sm md:text-base font-medium mb-2">{label}</label>
+              <input
+                type={type}
+                name={name}
+                value={formData[name]}
+                onChange={handleChange}
+                className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
+                  errors[name]
+                    ? "border-red-500"
+                    : "border-blue-300 focus:ring-blue-400"
+                } focus:outline-none focus:ring-2 transition duration-150`}
+                placeholder={label}
+              />
+              {errors[name] && (
+                <p className="text-red-600 text-sm mt-1">{errors[name]}</p>
+              )}
+            </motion.div>
+          ))}
+
+          <motion.div
+            className="md:col-span-2"
+            variants={fadeInUp}
+            custom={4}
+          >
+            <label className="block text-sm md:text-base font-medium mb-2">Message</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows="4"
+              placeholder="Enter your message"
+              className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
+                errors.message
+                  ? "border-red-500"
+                  : "border-blue-300 focus:ring-blue-400"
+              } focus:outline-none focus:ring-2 resize-none transition duration-150`}
+            />
+            {errors.message && (
+              <p className="text-red-600 text-sm mt-1">{errors.message}</p>
+            )}
+          </motion.div>
+
+          <motion.div
+            className="md:col-span-2 flex justify-center mt-6"
+            variants={fadeInUp}
+            custom={5}
+          >
+            <motion.button
+              type="submit"
+              disabled={status.sending}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
+                status.sending ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {status.sending ? "Sending..." : "Send Request"}
+            </motion.button>
+          </motion.div>
+
+          {status.success !== null && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+              className={`md:col-span-2 text-center mt-4 ${
+                status.success ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {status.success
+                ? "✅ Your quote has been sent!"
+                : "❌ Failed to send. Try again later."}
+            </motion.p>
+          )}
+        </form>
+      </motion.div>
     </div>
-  ))}
-
-  <div className="md:col-span-2">
-    <label className="block text-sm md:text-base font-medium mb-2">Message</label>
-    <textarea
-      name="message"
-      value={formData.message}
-      onChange={handleChange}
-      rows="4"
-      placeholder="Enter your message"
-      className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${
-        errors.message
-          ? "border-red-500"
-          : "border-blue-300 focus:ring-blue-400"
-      } focus:outline-none focus:ring-2 resize-none transition duration-150`}
-    />
-    {errors.message && (
-      <p className="text-red-600 text-sm mt-1">{errors.message}</p>
-    )}
-  </div>
-
-  <div className="md:col-span-2 flex justify-center mt-6">
-    <button
-      type="submit"
-      disabled={status.sending}
-      className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
-        status.sending ? "opacity-50 cursor-not-allowed" : ""
-      }`}
-    >
-      {status.sending ? "Sending..." : "Send Request"}
-    </button>
-  </div>
-
-  {status.success === true && (
-    <p className="md:col-span-2 text-green-600 text-center mt-4">
-      ✅ Your quote has been sent!
-    </p>
-  )}
-  {status.success === false && (
-    <p className="md:col-span-2 text-red-600 text-center mt-4">
-      ❌ Failed to send. Try again later.
-    </p>
-  )}
-</form>
-
-    </div>
-  </div>
-  
   );
 };
 

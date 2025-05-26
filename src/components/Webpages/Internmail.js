@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 
 export const Internmail = () => {
   const [formData, setFormData] = useState({
@@ -52,16 +53,47 @@ export const Internmail = () => {
     { label: "College Name", name: "collegeName" },
   ];
 
-  return (
-    <div className="flex items-center justify-center animate-fadeIn">
-      <div className="bg-white/90 p-4 rounded-3xl shadow-2xl w-full max-w-2xl md:max-w-5xl border border-blue-200">
-        <h2 className="text-2xl font-bold text-blue-800 text-center mb-8 tracking-tight drop-shadow">
-           Internship Application
-        </h2>
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center justify-center"
+    >
+      <motion.div
+        className="bg-white/90 p-4 rounded-3xl shadow-2xl w-full max-w-2xl md:max-w-5xl border border-blue-200"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.h2
+          className="text-2xl font-bold text-blue-800 text-center mb-8 tracking-tight drop-shadow"
+          variants={itemVariants}
+        >
+          Internship Application
+        </motion.h2>
+
+        <motion.form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          variants={containerVariants}
+        >
           {inputFields.map(({ label, name, type = "text" }) => (
-            <div key={name} className="relative">
+            <motion.div key={name} className="relative" variants={itemVariants}>
               <input
                 id={name}
                 name={name}
@@ -78,20 +110,23 @@ export const Internmail = () => {
               >
                 {label}
               </label>
-            </div>
+            </motion.div>
           ))}
 
           {/* Gender */}
-          <div className="col-span-1">
+          <motion.div className="col-span-1" variants={itemVariants}>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Gender
             </label>
             <div className="flex flex-wrap gap-4 md:flex-row">
               {["Male", "Female"].map((g) => (
-                <button
+                <motion.button
                   key={g}
                   type="button"
-                  onClick={() => handleChange({ target: { name: "gender", value: g } })}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() =>
+                    handleChange({ target: { name: "gender", value: g } })
+                  }
                   className={`px-4 py-2 rounded-full border font-medium transition ${
                     formData.gender === g
                       ? "bg-blue-600 text-white border-blue-700"
@@ -99,22 +134,25 @@ export const Internmail = () => {
                   }`}
                 >
                   {g}
-                </button>
+                </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Mode */}
-          <div className="col-span-1">
+          <motion.div className="col-span-1" variants={itemVariants}>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Mode
             </label>
             <div className="flex flex-wrap gap-4 md:flex-row">
               {["Online", "Offline"].map((mode) => (
-                <button
+                <motion.button
                   key={mode}
                   type="button"
-                  onClick={() => handleChange({ target: { name: "online", value: mode } })}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() =>
+                    handleChange({ target: { name: "online", value: mode } })
+                  }
                   className={`px-4 py-2 rounded-full border font-medium transition ${
                     formData.online === mode
                       ? "bg-blue-600 text-white border-blue-700"
@@ -122,22 +160,27 @@ export const Internmail = () => {
                   }`}
                 >
                   {mode}
-                </button>
+                </motion.button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Submit */}
-          <div className="md:col-span-2 text-center mt-8">
-            <button
+          <motion.div
+            className="md:col-span-2 text-center mt-8"
+            variants={itemVariants}
+          >
+            <motion.button
               type="submit"
-              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 px-10 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-105 transition duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 px-10 rounded-full font-semibold shadow-md hover:shadow-lg transition duration-200"
             >
               Submit Application
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+            </motion.button>
+          </motion.div>
+        </motion.form>
+      </motion.div>
+    </motion.div>
   );
 };
