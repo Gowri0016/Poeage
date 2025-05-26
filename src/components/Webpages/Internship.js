@@ -120,7 +120,7 @@ const InternshipPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl sm:text-4xl text-blue-800 mt-8 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent mt-8 tracking-tight">
             Internship Opportunities at Poeage
           </h1>
           <p className="mt-6 text-gray-700 text-lg max-w-3xl mx-auto">

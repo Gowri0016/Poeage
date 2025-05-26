@@ -41,12 +41,12 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <div className="bg-gray-900 text-gray-200 rounded-2xl p-6 sm:p-10 w-full max-w-3xl text-center shadow-lg">
-            <h6 className="uppercase font-bold text-2xl sm:text-3xl mb-4 text-gradient bg-gradient-to-r from-blue-500 to-white bg-clip-text text-transparent">
+            <h6 className="uppercase font-bold text-2xl sm:text-3xl mb-4 text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent">
               About Us
             </h6>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Welcome to <span className="text-sky-500 font-semibold">Poeage IT Solution</span>, your trusted partner in innovative web development and IT solutions.
-              Our founder, <span className="text-sky-500 hover:text-sky-300">Mr. Gowrishankar</span>, leads us to redefine digital success.
+              Welcome to <span className="text-cyan-500 font-semibold hover:text-cyan-300">Poeage IT Solution</span>, your trusted partner in innovative web development and IT solutions.
+              Our founder, <span className="text-cyan-500 hover:text-cyan-300">Mr. Gowrishankar</span>, leads us to redefine digital success.
             </p>
           </div>
         </motion.section>
@@ -88,29 +88,29 @@ const Footer = () => {
               <div className="flex space-x-4">
                 <motion.a
                   whileHover={{ scale: 1.2 }}
-                  href="https://www.linkedin.com/in/g-gowri-shankar"
-                  className="hover:text-indigo-400"
+                  href="https://www.linkedin.com/in/poeage?lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3Bt9RH1MBQQw%2B29u7BicqjmA%3D%3D"
+                  className="hover:text-cyan-500"
                 >
                   <Linkedin size={28} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.2 }}
                   href="https://www.instagram.com/poeage__com?igsh=MTljMmMyanY4dDlsbw=="
-                  className="hover:text-indigo-400"
+                  className="hover:text-pink-500"
                 >
                   <Instagram size={28} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.2 }}
                   href="https://x.com/PoeageCom?t=_csbreCayXikIYn-JA0hpw&s=09"
-                  className="hover:text-indigo-400"
+                  className="hover:text-blue-500"
                 >
                   <Twitter size={28} />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.2 }}
-                  href="https://www.facebook.com/people/Poeage/61575953696329"
-                  className="hover:text-indigo-400"
+                  href="https://www.facebook.com/share/1BjULrjR2w/"
+                  className="hover:text-sky-400"
                 >
                   <Facebook size={28} />
                 </motion.a>

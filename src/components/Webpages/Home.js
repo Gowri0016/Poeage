@@ -30,7 +30,7 @@ export const Home = () => {
       
       {/* Header */}
       <motion.h1
-        className="text-3xl sm:text-4xl md:text-5xl font-semibold"
+        className="text-3xl text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent sm:text-4xl md:text-5xl font-semibold"
         variants={fadeUp}
         initial="hidden"
         animate="visible"
@@ -41,7 +41,7 @@ export const Home = () => {
 
       {/* Subheading */}
       <motion.h2
-        className="text-blue-500 font-bold text-xl md:text-2xl"
+        className="text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent font-bold text-xl md:text-2xl hover:text-cyan-400"
         variants={fadeUp}
         initial="hidden"
         animate="visible"
@@ -58,7 +58,7 @@ export const Home = () => {
         animate="visible"
         custom={2}
       >
-        At <span className="font-bold text-blue-400">Poeage</span>, we blend clean code with captivating design to build 
+        At <span className="font-bold text-cyan-500">Poeage</span>, we blend clean code with captivating design to build 
         memorable digital products. From intuitive interfaces to sleek animations, every pixel is crafted with purpose.
       </motion.p>
 
@@ -109,7 +109,7 @@ export const Home = () => {
           onClick={handleClick}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg"
+          className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg"
         >
           Request a Design Quote <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
         </motion.button>
@@ -120,7 +120,7 @@ export const Home = () => {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg"
+          className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg"
         >
           My Creative Portfolio <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
         </motion.a>

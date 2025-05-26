@@ -39,7 +39,7 @@ export const Header = () => {
 
                 {/* Desktop Navbar */}
                 <nav className="hidden md:flex items-center text-white space-x-8">
-                    <a href="/" className="hover:text-blue-600 transition">
+                    <a href="/" className="hover:text-gradient-to-r from-cyan-400 to-blue-800 transition">
                         {capitalizeFirst(navbar.home)}
                     </a>
 

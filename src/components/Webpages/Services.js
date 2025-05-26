@@ -29,7 +29,7 @@ export const Services = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-700 text-center mb-10"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-500 text-center mb-10"
         >
           What We Do Best
         </motion.h1>
@@ -46,23 +46,23 @@ export const Services = () => {
                 variants={cardVariants}
               >
                 <img src={data.image} alt="service-icon" className="w-14 h-14 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold text-blue-700 mb-2">{data.topic}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-cyan-500 mb-2">{data.topic}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{data.content}</p>
               </motion.div>
             ))
           ) : (
-            <div className="text-center text-gray-500">Our service list is loading...</div>
+            <div className="text-center text-gray-600">Our service list is loading...</div>
           )}
         </div>
       </section>
 
       {/* Why Choose Me */}
-      <section className="relative z-10 top-20 py-14 bg-gradient-to-b from-blue-50 to-white">
+      <section className="relative z-10 top-20 py-14 bg-white">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-800 text-center mb-10"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-500 text-center mb-10"
         >
           Why Choose Me
         </motion.h1>
@@ -79,7 +79,7 @@ export const Services = () => {
                 variants={cardVariants}
               >
                 <img src={data.image} alt="choose-icon" className="w-14 h-14 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold text-blue-800 mb-2">{data.topic}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-cyan-500 mb-2">{data.topic}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{data.content}</p>
               </motion.div>
             ))

@@ -107,7 +107,7 @@ const Getquotes = () => {
         <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tl from-blue-100 to-transparent rounded-tl-full z-0" />
 
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-6 sm:mb-8 relative z-10"
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-cyan-500 mb-6 sm:mb-8 relative z-10"
           variants={fadeInUp}
           custom={0}
         >
@@ -165,7 +165,7 @@ const Getquotes = () => {
               disabled={status.sending}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
+              className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-cyan-500 to-blue-600  hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
                 status.sending ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
