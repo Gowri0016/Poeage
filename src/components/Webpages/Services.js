@@ -21,6 +21,8 @@ export const Services = () => {
       ? service[6].choose.slice(0, 6)
       : service[6]?.choose;
 
+  const aiServices = service && service.length > 6 ? service.slice(6, 12) : [];
+
   return (
     <>
       {/* What We Do Best */}
@@ -56,7 +58,7 @@ export const Services = () => {
         </div>
       </section>
 
-      {/* Why Choose Me */}
+      {/* Why Choose Us */}
       <section className="relative z-10 top-20 py-14 bg-white">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -84,9 +86,40 @@ export const Services = () => {
               </motion.div>
             ))
           ) : (
-            <div className="text-center text-gray-500">
-              Loading reasons to choose me...
-            </div>
+            <div className="text-center text-gray-500">Loading reasons to choose us...</div>
+          )}
+        </div>
+      </section>
+
+      {/* AI Solutions */}
+      <section className="relative z-10 top-20 py-14 bg-white">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-500 text-center mb-10"
+        >
+          AI Solutions
+        </motion.h1>
+
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 px-4">
+          {aiServices && aiServices.length > 0 ? (
+            aiServices.map((data, index) => (
+              <motion.div
+                key={index}
+                className="w-full sm:w-[300px] max-w-sm bg-white text-center p-6 rounded-2xl shadow-md hover:shadow-xl transition-transform duration-300 transform hover:-translate-y-1"
+                custom={index}
+                initial="hidden"
+                animate="visible"
+                variants={cardVariants}
+              >
+                <img src={data.image} alt="ai-icon" className="w-14 h-14 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-xl font-semibold text-cyan-500 mb-2">{data.topic}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{data.content}</p>
+              </motion.div>
+            ))
+          ) : (
+            <div className="text-center text-gray-500">Loading AI services...</div>
           )}
         </div>
       </section>

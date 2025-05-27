@@ -46,6 +46,7 @@ const Footer = () => {
             </h6>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
               Welcome to <span className="text-cyan-500 font-semibold hover:text-cyan-300">Poeage IT Solution</span>, your trusted partner in innovative web development and IT solutions.
+
             </p>
           </div>
         </motion.section>
