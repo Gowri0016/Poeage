@@ -64,7 +64,7 @@ export const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-500 text-center mb-10"
         >
-          Why Choose Me
+          Why Choose Us
         </motion.h1>
 
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 px-4">

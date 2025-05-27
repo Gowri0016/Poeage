@@ -122,7 +122,7 @@ export const Home = () => {
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 text-lg md:text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-800 rounded-full hover:bg-blue-600 hover:text-white transition duration-300 shadow-lg"
         >
-          My Creative Portfolio <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
+          Our Creative Portfolio <ArrowRightCircle className="w-5 h-5 md:w-6 md:h-6" />
         </motion.a>
       </motion.div>
     </div>
