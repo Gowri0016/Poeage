@@ -109,7 +109,7 @@ if (!formData.phone.trim()) {
         <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tl from-blue-100 to-transparent rounded-tl-full z-0" />
 
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-cyan-500 mb-6 sm:mb-8 relative z-10"
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 sm:mb-8 relative z-10"
           variants={fadeInUp}
           custom={0}
         >
