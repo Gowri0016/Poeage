@@ -2,118 +2,109 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.4,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-};
-
 function Notfound() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-gray-800 to-gray-900 text-white overflow-hidden relative perspective-1000">
 
-      {/* Animated Background */}
-      <motion.div 
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 via-transparent to-transparent opacity-10 blur-3xl z-0 animate-pulse"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse' }}
+      {/* Animated Floating Gradient Backdrop */}
+      <motion.div
+        className="absolute w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/20 via-blue-500/10 to-transparent blur-3xl z-0"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
       />
 
-      {/* 404 Header */}
-      <motion.h1 
-        className="text-7xl sm:text-8xl font-black mb-4 z-10 drop-shadow-lg text-blue-400"
-        initial={{ scale: 0.8, rotate: -10, opacity: 0 }}
-        animate={{ scale: 1.1, rotate: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 100, damping: 8 }}
+      {/* 3D 404 Title */}
+      <motion.h1
+        className="text-8xl sm:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-500 to-purple-500 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] z-10"
+        initial={{ scale: 0.8, rotateX: 20, opacity: 0 }}
+        animate={{ scale: 1.05, rotateX: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 90, damping: 10 }}
       >
         404
       </motion.h1>
 
       {/* Subheading */}
-      <motion.h2 
-        className="text-xl sm:text-2xl mb-4 z-10"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
+      <motion.h2
+        className="text-2xl sm:text-3xl font-medium mt-2 z-10 text-white/90"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
       >
-        Oops! Page Not Found
+        Page Not Found
       </motion.h2>
 
       {/* Description */}
-      <motion.p 
-        className="mb-8 text-gray-400 max-w-md text-center z-10"
+      <motion.p
+        className="text-center text-gray-400 mt-4 mb-10 px-6 max-w-md z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
+        transition={{ delay: 0.6, duration: 1 }}
       >
-        The page you're looking for doesn't exist, or it has been moved.
+        The page you're trying to reach doesn't exist or has been moved.
       </motion.p>
 
-      {/* Button Group with Staggered Animations */}
+      {/* 3D-like Buttons */}
       <motion.div
-        className="z-10 flex flex-col sm:flex-row gap-4 sm:gap-6"
-        variants={containerVariants}
+        className="z-10 flex flex-col sm:flex-row items-center gap-4"
         initial="hidden"
         animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 1,
+            },
+          },
+        }}
       >
-        {/* Button 1 */}
-        <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link 
-            to="/" 
-            className="relative px-6 py-3 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold rounded-full shadow-lg overflow-hidden"
+        {[
+          {
+            text: "Go Back Home",
+            to: "/",
+            bg: "from-blue-600 via-indigo-600 to-purple-600",
+            border: "",
+            hover: "hover:scale-105 hover:shadow-blue-400",
+          },
+          {
+            text: "Take Me Home",
+            to: "/",
+            bg: "bg-transparent",
+            border: "border-2 border-blue-500",
+            hover: "hover:bg-blue-500 hover:text-white",
+          },
+          {
+            text: "Return to Safety",
+            to: "/",
+            bg: "bg-transparent",
+            border: "border-2 border-pink-600 text-pink-500",
+            hover: "hover:bg-pink-500 hover:text-white",
+          },
+        ].map((btn, i) => (
+          <motion.div
+            key={i}
+            className="relative group"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            whileHover={{ rotateY: 5, rotateX: 5 }}
+            style={{ transformStyle: 'preserve-3d' }}
           >
-            <span className="relative z-10">Go Back Home</span>
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-400 to-pink-400 opacity-40 blur-xl scale-110"
-              animate={{ opacity: [0.2, 0.4, 0.2] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            />
-          </Link>
-        </motion.div>
-
-        {/* Button 2 */}
-        <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link 
-            to="/" 
-            className="relative px-6 py-3 bg-transparent border-2 border-blue-500 text-white font-semibold rounded-full shadow-md hover:bg-blue-500 transition-all"
-          >
-            <span className="relative z-10">Take Me Home</span>
-            <motion.span
-              className="absolute inset-0 bg-blue-600 opacity-20 blur-xl scale-110"
-              animate={{ opacity: [0.1, 0.3, 0.1] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-            />
-          </Link>
-        </motion.div>
-
-        {/* Button 3 */}
-        <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link 
-            to="/" 
-            className="relative px-6 py-3 bg-transparent border-2 border-pink-600 text-pink-600 font-semibold rounded-full shadow-md hover:bg-pink-500 hover:text-white transition-all"
-          >
-            <span className="relative z-10">Return to Safety</span>
-            <motion.span
-              className="absolute inset-0 bg-pink-400 opacity-30 blur-xl scale-110"
-              animate={{ opacity: [0.2, 0.4, 0.2] }}
-              transition={{ repeat: Infinity, duration: 2.5 }}
-            />
-          </Link>
-        </motion.div>
+            <Link
+              to={btn.to}
+              className={`relative px-6 py-3 rounded-full font-semibold text-white shadow-lg transition-all duration-300 ${btn.bg} ${btn.border} ${btn.hover}`}
+            >
+              {btn.text}
+              {/* Floating Glow */}
+              <motion.span
+                className="absolute inset-0 blur-xl opacity-20 rounded-full"
+                animate={{ opacity: [0.2, 0.5, 0.2] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+              />
+            </Link>
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   );

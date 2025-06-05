@@ -57,6 +57,28 @@ export const Services = () => {
     <>
       {/* What We Do Best */}
       <section className="relative z-10 top-20 py-20 bg-gradient-to-br from-[#e0f7fa] via-white to-[#f3e5f5]">
+        {/* Roadmap Cards */}
+        <div className="flex flex-wrap justify-center gap-8 mb-12 px-6">
+          {[
+            { title: 'Web Development', color: 'from-green-400 to-blue-500' },
+            { title: 'Application Development', color: 'from-purple-400 to-pink-500' },
+            { title: 'AI Development', color: 'from-yellow-400 to-red-500' },
+            { title: 'Customized Applications', color: 'from-teal-400 to-indigo-500' },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className={`w-[220px] sm:w-[250px] text-center p-4 rounded-xl shadow-lg bg-gradient-to-r ${item.color} text-white font-semibold text-lg tracking-wide hover:scale-105 transition-transform duration-300`}
+            >
+              {item.title}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,6 +88,7 @@ export const Services = () => {
           What We Do Best
         </motion.h1>
 
+        {/* Service Cards */}
         <div className="flex flex-wrap justify-center gap-10 px-6">
           {limitedServices?.length > 0 ? (
             limitedServices.map((data, index) => (
@@ -80,11 +103,8 @@ export const Services = () => {
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white border border-teal-200 w-16 h-16 rounded-full flex items-center justify-center shadow-md">
                   <img src={data.image} alt="service-icon" className="w-8 h-8" />
                 </div>
-
                 <div className="mt-10 text-center">
-                  <h3 className="text-xl font-semibold text-cyan-600 mb-2">
-                    {data.topic}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-cyan-600 mb-2">{data.topic}</h3>
                   <p className="text-sm text-gray-700 leading-relaxed">{data.content}</p>
                 </div>
               </motion.div>
@@ -121,9 +141,7 @@ export const Services = () => {
                   <img src={data.image} alt="icon" className="w-8 h-8" />
                 </div>
                 <div className="mt-10 text-center">
-                  <h3 className="text-xl font-semibold text-cyan-600 mb-2">
-                    {data.topic}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-cyan-600 mb-2">{data.topic}</h3>
                   <p className="text-sm text-gray-700 leading-relaxed">{data.content}</p>
                 </div>
               </motion.div>
@@ -146,31 +164,24 @@ export const Services = () => {
         </motion.h1>
 
         <div className="flex flex-wrap justify-center gap-10 px-6">
-          {defaultAIServices?.length > 0 ? (
-            defaultAIServices.map((data, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6, type: 'spring' }}
-                viewport={{ once: true }}
-                className="relative w-[280px] sm:w-[300px] bg-white/90 backdrop-blur-lg border border-teal-100 p-6 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-300"
-              >
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-teal-100 w-16 h-16 rounded-full flex items-center justify-center shadow-lg text-2xl text-black">
-                  {React.cloneElement(data.icon, { className: 'text-black w-6 h-6' })}
-                </div>
-
-                <div className="mt-10 text-center">
-                  <h4 className="text-xl font-semibold text-cyan-600 mb-2">
-                    {data.topic}
-                  </h4>
-                  <p className="text-sm text-gray-700 leading-relaxed">{data.content}</p>
-                </div>
-              </motion.div>
-            ))
-          ) : (
-            <div className="text-center text-gray-500">Loading AI services...</div>
-          )}
+          {defaultAIServices.map((data, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6, type: 'spring' }}
+              viewport={{ once: true }}
+              className="relative w-[280px] sm:w-[300px] bg-white/90 backdrop-blur-lg border border-teal-100 p-6 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-300"
+            >
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-teal-100 w-16 h-16 rounded-full flex items-center justify-center shadow-lg text-2xl text-black">
+                {React.cloneElement(data.icon, { className: 'text-black w-6 h-6' })}
+              </div>
+              <div className="mt-10 text-center">
+                <h4 className="text-xl font-semibold text-cyan-600 mb-2">{data.topic}</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">{data.content}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </>
