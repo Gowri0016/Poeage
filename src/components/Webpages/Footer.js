@@ -42,28 +42,34 @@ const Footer = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-800 to-transparent -z-10"></div>
 
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        {/* About Us Section */}
-        <motion.section
-          className="container mx-auto py-8 px-4 sm:px-6 flex justify-center relative z-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gray-900 text-gray-200 rounded-2xl p-6 sm:p-10 w-full max-w-3xl text-center shadow-lg">
-            <h6 className="uppercase font-bold text-2xl sm:text-3xl mb-4 text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent">
-              About Us
-            </h6>
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-              Welcome to{" "}
-              <span className="text-cyan-500 font-semibold hover:text-cyan-300">
-                Poeage IT Solution
-              </span>
-              , your trusted partner in innovative web development and IT
-              solutions.
-            </p>
-          </div>
-        </motion.section>
+      {/* About Us Section */}
+<motion.section
+  className="container mx-auto py-8 px-4 sm:px-6 flex justify-center relative z-10"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  <div className="bg-gray-900 text-gray-200 rounded-2xl p-6 sm:p-10 w-full max-w-3xl text-center shadow-lg">
+    <h6 className="uppercase font-bold text-2xl sm:text-3xl mb-4 text-gradient bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text text-transparent">
+      About Us
+    </h6>
+    <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+      Welcome to{" "}
+      <span className="text-cyan-500 font-semibold hover:text-cyan-300">
+        Poeage IT Solution
+      </span>
+      , your trusted partner in innovative web development and IT solutions.
+    </p>
+    <a
+      href="/Aboutus"
+      className="inline-block bg-cyan-500 hover:bg-cyan-400 text-white font-semibold px-5 py-2 rounded-full shadow-md transition duration-300"
+    >
+      Explore More
+    </a>
+  </div>
+</motion.section>
+
 
         <motion.div
           className="flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10"

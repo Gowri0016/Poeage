@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Navbar } from './Webpages/Navbar'
-import { Home } from './Webpages/Home'
- import Internship from './Webpages/Internship'
-import Getquotes from './Webpages/Getquotes'
-import Notfound from './Webpages/Notfound'
-import Aboutus from './Webpages/Aboutus'
+import { Navbar } from './Webpages/Navbar';
+import { Home } from './Webpages/Home';
+ import Internship from './Webpages/Internship';
+import Getquotes from './Webpages/Getquotes';
+import Notfound from './Webpages/Notfound';
+import Aboutus from './Webpages/Aboutus';
 
 
 
@@ -20,8 +20,6 @@ export const Storage = () => {
         <Route path='/quotes' element={<Getquotes/>}></Route>
         <Route path='/aboutus' element={<Aboutus />}></Route>
     </Routes>
-    
-  
     </>
   )
 }
