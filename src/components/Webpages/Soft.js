@@ -3,16 +3,8 @@ import { Header } from './Header';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import {
-  FaCode,
-  FaMobileAlt,
-  FaCloud,
-  FaCogs,
-  FaLock,
-  FaRobot,
-  FaDatabase,
-  FaTools,
-  FaChartLine,
-  FaRocket,
+  FaCode, FaMobileAlt, FaCloud, FaCogs, FaLock,
+  FaRobot, FaDatabase, FaTools, FaChartLine, FaRocket,
 } from 'react-icons/fa';
 
 export default function Soft() {
@@ -77,12 +69,12 @@ export default function Soft() {
         <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
         {/* Decorative Balls */}
-        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0" />
-        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0" />
-        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0" />
+        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
+        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0 hidden md:block" />
+        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0 hidden md:block" />
 
         {/* Content Section */}
-        <div className="relative z-10 py-24 px-6 sm:px-10 lg:px-20">
+        <div className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

@@ -3,54 +3,59 @@ import { Header } from "./Header";
 import Footer from "./Footer";
 import emailjs from "emailjs-com";
 
+// Domain selection button (memoized for performance)
+const DomainButton = React.memo(({ language, selected, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`py-2 px-3 text-xs sm:text-sm rounded-lg font-medium shadow-sm transition-all ${
+      selected
+        ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white border border-blue-700 scale-105"
+        : "bg-white text-gray-800 border border-gray-300 hover:border-blue-400"
+    }`}
+  >
+    {language}
+  </button>
+));
+
 const InternshipPage = () => {
-  const languages = [
-    "MEAN Stack",
-    "MERN Stack",
-    "Java",
-    "Python",
-    "MongoDB",
-    "Networks",
-    "IoT",
-    "UI/UX",
+  const domains = [
+    "MEAN Stack", "MERN Stack", "Java", "Python",
+    "MongoDB", "Networks", "IoT", "UI/UX"
   ];
 
-  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [selectedDomain, setSelectedDomain] = useState("");
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    contactNumber: "",
-    message: "",
+    name: "", email: "", contactNumber: "", message: ""
   });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ sending: false, success: null });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrors(prev => ({ ...prev, [e.target.name]: "" }));
   };
 
   const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    const err = {};
+    if (!formData.name.trim()) err.name = "Name is required";
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      err.email = "Email is required";
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
-      newErrors.email = "Invalid email format";
+      err.email = "Invalid email format";
     }
     if (!formData.contactNumber.trim()) {
-      newErrors.contactNumber = "Contact number is required";
+      err.contactNumber = "Contact number is required";
     } else if (!/^[6-9]\d{9}$/.test(formData.contactNumber)) {
-      newErrors.contactNumber = "Must be 10 digits starting with 6-9";
+      err.contactNumber = "Must be 10 digits starting with 6-9";
     }
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    return newErrors;
+    if (!formData.message.trim()) err.message = "Message is required";
+    return err;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
+    if (Object.keys(validationErrors).length) {
       setErrors(validationErrors);
       return;
     }
@@ -61,129 +66,128 @@ const InternshipPage = () => {
       .send(
         "service_v64n5p6",
         "template_abgnxru",
-        { ...formData, domain: selectedLanguage },
+        { ...formData, domain: selectedDomain },
         "woqdTWdPjegdzu3os"
       )
       .then(() => {
-        setStatus({ sending: false, success: true });
         setFormData({ name: "", email: "", contactNumber: "", message: "" });
+        setStatus({ sending: false, success: true });
       })
-      .catch(() => {
-        setStatus({ sending: false, success: false });
-      });
+      .catch(() => setStatus({ sending: false, success: false }));
   };
 
   return (
     <>
       <Header />
 
-      {/* Decorative Background */}
-      <div className="absolute  inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute w-72 h-72 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-5 animate-pulse z-0" />
-      <div className="absolute w-56 h-56 bg-red-200 opacity-30 rounded-full blur-2xl top-[65%] left-[60%] animate-bounce z-0" />
-      <div className="absolute w-44 h-44 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-10 right-6 animate-ping z-0" />
+       {/* Grid Background */}
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-      <div className="relative min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-200 py-12 px-4 sm:px-6 lg:px-8">
-        <section className="text-center mb-12 max-w-3xl mx-auto">
-          <h1 className="text-2xl  pt-10 sm:text-3xl md:text-4xl font-semibold text-transparent bg-gradient-to-r to-blue-500 from-cyan-500 bg-clip-text">
+        {/* Decorative Balls */}
+        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
+        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0 hidden md:block" />
+        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0 hidden md:block" />
+
+
+      <main className="relative min-h-screen bg-transparent py-10 px-4 sm:px-6 md:px-10">
+
+        {/* Intro */}
+        <section className="text-center mb-10 max-w-2xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
             Internship Opportunities at Poeage
           </h1>
-          <p className="mt-4 text-gray-700 text-base sm:text-lg px-2">
-            Join us for a chance to work on real-world projects in exciting domains. Learn from industry experts and earn a certificate from an ISO-certified organization.
+          <p className="mt-4 text-gray-700 text-sm sm:text-base">
+            Work on live projects, gain industry exposure, and earn a certificate from an ISO-certified company.
           </p>
         </section>
 
-        <div className="w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full mb-12 max-w-md mx-auto" />
-
-        <section className="max-w-5xl mx-auto mb-16 px-2 sm:px-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl text-center text-gray-800 mb-6 font-medium">
-            Select Your Preferred Domain
+        {/* Domain Selection */}
+        <div className="max-w-xl mx-auto mb-12">
+          <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
+            Choose Your Preferred Domain
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
-            {languages.map((language, index) => (
-              <button
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {domains.map((domain, index) => (
+              <DomainButton
                 key={index}
-                onClick={() => setSelectedLanguage(language)}
-                className={`py-3 px-4 text-xs sm:text-sm rounded-xl font-medium shadow-md text-center transition-all ${
-                  selectedLanguage === language
-                    ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white scale-105 border-2 border-blue-700"
-                    : "bg-white text-gray-800 border border-gray-300 hover:border-blue-500 hover:text-blue-600"
-                }`}
-              >
-                {language}
-              </button>
+                language={domain}
+                selected={selectedDomain === domain}
+                onClick={() => setSelectedDomain(domain)}
+              />
             ))}
           </div>
-        </section>
+        </div>
 
-        <div className="w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full mb-12 max-w-md mx-auto" />
-
-        <section className="max-w-3xl mx-auto bg-white border border-blue-200 rounded-xl p-6 sm:p-8 shadow-xl">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl font-semibold">Apply Now</h3>
-            <p className="text-gray-600 mt-2 text-sm sm:text-base">
-              Fill in your details and submit your application to join our internship program.
+        {/* Form */}
+        <section className="max-w-xl mx-auto bg-white border border-blue-200 rounded-lg p-5 sm:p-8 shadow-xl">
+          <div className="text-center mb-5">
+            <h3 className="text-xl font-semibold">Apply Now</h3>
+            <p className="text-gray-600 text-sm sm:text-base mt-1">
+              Submit your details to join the internship program.
             </p>
           </div>
 
-          <form
-            onSubmit={handleSubmit}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 text-blue-900"
-          >
-            {[{ name: "name", label: "Full Name" },
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
+            {[
+              { name: "name", label: "Full Name" },
               { name: "email", label: "Email", type: "email" },
-              { name: "contactNumber", label: "Contact Number" }].map(({ name, label, type = "text" }) => (
+              { name: "contactNumber", label: "Contact Number" },
+            ].map(({ name, label, type = "text" }) => (
               <div key={name}>
-                <label className="block text-sm font-medium mb-1">{label}</label>
+                <label className="text-sm font-medium">{label}</label>
                 <input
                   type={type}
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    errors[name]
-                      ? "border-red-500"
-                      : "border-blue-300 focus:ring-blue-400"
-                  } focus:outline-none focus:ring-2 transition duration-150`}
                   placeholder={label}
+                  className={`w-full mt-1 px-4 py-2 rounded-md border ${
+                    errors[name] ? "border-red-500" : "border-blue-300"
+                  } focus:outline-none focus:ring-2 ${
+                    errors[name] ? "focus:ring-red-400" : "focus:ring-blue-400"
+                  } transition`}
                 />
-                {errors[name] && <p className="text-red-600 text-sm mt-1">{errors[name]}</p>}
+                {errors[name] && (
+                  <p className="text-red-600 text-xs mt-1">{errors[name]}</p>
+                )}
               </div>
             ))}
 
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium mb-1">Message</label>
+            <div>
+              <label className="text-sm font-medium">Message</label>
               <textarea
                 name="message"
+                rows="4"
                 value={formData.message}
                 onChange={handleChange}
-                rows="4"
                 placeholder="Enter your message"
-                className={`w-full px-4 py-2 rounded-lg border ${
-                  errors.message
-                    ? "border-red-500"
-                    : "border-blue-300 focus:ring-blue-400"
-                } focus:outline-none focus:ring-2 resize-none transition duration-150`}
+                className={`w-full mt-1 px-4 py-2 rounded-md border ${
+                  errors.message ? "border-red-500" : "border-blue-300"
+                } focus:outline-none focus:ring-2 ${
+                  errors.message ? "focus:ring-red-400" : "focus:ring-blue-400"
+                } resize-none transition`}
               />
-              {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+              {errors.message && (
+                <p className="text-red-600 text-xs mt-1">{errors.message}</p>
+              )}
             </div>
 
-            <div className="md:col-span-2 flex justify-center">
-              <button
-                type="submit"
-                disabled={status.sending}
-                className={`w-full sm:w-auto px-6 py-2.5 sm:px-10 text-white text-sm sm:text-base font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition ${
-                  status.sending ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-              >
-                {status.sending ? "Sending..." : "Send Request"}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={status.sending}
+              className={`w-full py-2.5 text-white font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition ${
+                status.sending ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {status.sending ? "Sending..." : "Send Request"}
+            </button>
 
             {status.success !== null && (
-              <p className={`md:col-span-2 text-center mt-4 text-sm ${
-                status.success ? "text-green-600" : "text-red-600"
-              }`}>
+              <p
+                className={`text-center text-sm ${
+                  status.success ? "text-green-600" : "text-red-600"
+                }`}
+              >
                 {status.success
                   ? "✅ Your application has been sent!"
                   : "❌ Failed to send. Try again later."}
@@ -191,7 +195,7 @@ const InternshipPage = () => {
             )}
           </form>
         </section>
-      </div>
+      </main>
 
       <Footer />
     </>
