@@ -43,43 +43,41 @@ export const Home = () => {
   ];
 
   return (
-    <div
-      className="min-h-screen w-full bg-white"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-      }}
-    >
-      <div className="relative top-24 z-10 flex flex-col justify-center items-center w-full px-4 text-center space-y-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-inter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600 bg-clip-text text-transparent drop-shadow-lg">
-          Business software is our craft
+    <div className="relative min-h-screen bg-gradient-to-br from-white via-sky-50 to-blue-100 overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 opacity-20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-72 h-72 bg-cyan-200 opacity-30 rounded-full blur-2xl animate-ping" />
+      <div className="absolute top-[50%] left-[70%] w-64 h-64 bg-indigo-200 opacity-30 rounded-full blur-2xl animate-bounce" />
+
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 py-32 sm:px-10 lg:px-20 max-w-5xl mx-auto space-y-10">
+        <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 drop-shadow-md">
+          Where Code Meets Creativity
         </h1>
 
-        <h2 className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent animate-bounce">
-          Design. Develop. Deliver.
+        <h2 className="text-xl sm:text-2xl font-semibold bg-black bg-clip-text text-transparent tracking-wide animate-fade-in-up">
+          Crafting digital excellence for every business
         </h2>
 
-        <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-medium bg-gradient-to-r from-orange-500 via-blue-500 to-teal-500 text-transparent bg-clip-text">
-          At <span className="font-bold text-cyan-500">Poeage</span>, we blend clean code with captivating design to build memorable digital products. From intuitive interfaces to sleek animations, every pixel is crafted with purpose.
+        <p className="text-lg sm:text-xl md:text-2xl font-medium leading-relaxed text-gray-700 max-w-3xl">
+          At <span className="text-cyan-500 font-bold">Poeage</span>, we merge innovation with design — building scalable software, interactive websites, and seamless digital experiences.
         </p>
 
         <button
           onClick={handleClick}
-          className="mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300"
+          className="px-8 py-3 rounded-full bg-white/30 backdrop-blur-md text-blue-800 font-semibold text-lg flex items-center gap-2 border border-blue-200 hover:scale-105 hover:shadow-lg transition-all duration-300"
         >
           Get a Quote
           <ArrowRightCircle className="w-5 h-5" />
         </button>
 
-        <div className="flex justify-center gap-6 mt-8">
+        <div className="flex justify-center gap-5 mt-6">
           {socialLinks.map(({ platform, url, Icon, color }) => (
             <a
               key={platform}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-10 h-10 rounded-full flex items-center justify-center text-gray-700 bg-white shadow hover:scale-110 transition-all duration-300 ${color}`}
+              className={`w-11 h-11 rounded-full flex items-center justify-center text-gray-700 bg-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-300 ${color}`}
               title={platform}
             >
               <Icon className="w-5 h-5" />

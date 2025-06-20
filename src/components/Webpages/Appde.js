@@ -3,68 +3,62 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from './Header';
 import Footer from './Footer';
 import {
-  FaAndroid,
-  FaApple,
-  FaTabletAlt,
-  FaPalette,
-  FaSyncAlt,
-  FaCloudUploadAlt,
-  FaShieldAlt,
-  FaSearch,
-  FaBug,
-  FaRocket,
+  FaAndroid, FaApple, FaTabletAlt, FaPalette, FaSyncAlt,
+  FaCloudUploadAlt, FaShieldAlt, FaSearch, FaBug, FaRocket
 } from 'react-icons/fa';
 
 export default function Appde() {
   const navigate = useNavigate();
 
   const services = [
-    { icon: <FaAndroid className="text-3xl text-green-600" />, title: 'Android Development', desc: 'Robust, scalable, and secure apps built for the world’s most popular platform.' },
-    { icon: <FaApple className="text-3xl text-gray-700" />, title: 'iOS Development', desc: 'Elegant, high-performance apps for iPhones and iPads with native Swift/Obj-C.' },
-    { icon: <FaTabletAlt className="text-3xl text-purple-600" />, title: 'Cross-Platform Apps', desc: 'React Native & Flutter apps for both Android and iOS from a single codebase.' },
-    { icon: <FaPalette className="text-3xl text-pink-500" />, title: 'UI/UX Design', desc: 'Intuitive user interfaces and delightful experiences crafted for engagement.' },
-    { icon: <FaSyncAlt className="text-3xl text-yellow-500" />, title: 'App Maintenance', desc: 'Ongoing support, version updates, and bug fixes to keep your app fresh.' },
-    { icon: <FaCloudUploadAlt className="text-3xl text-blue-500" />, title: 'Backend Integration', desc: 'APIs, databases, and cloud systems that connect your app to the real world.' },
-    { icon: <FaShieldAlt className="text-3xl text-red-600" />, title: 'Security & Encryption', desc: 'Data protection, secure login systems, and GDPR-compliant development.' },
-    { icon: <FaSearch className="text-3xl text-indigo-600" />, title: 'App Store Optimization', desc: 'Boost visibility and installs through performance tuning and ASO strategies.' },
-    { icon: <FaBug className="text-3xl text-amber-700" />, title: 'Testing & QA', desc: 'Automated and manual testing to ensure your app works flawlessly.' },
-    { icon: <FaRocket className="text-3xl text-orange-600" />, title: 'Launch & Scaling', desc: 'We handle deployment and prepare your app to handle thousands of users.' },
+    { icon: <FaAndroid />, title: 'Android Development', desc: 'Robust, scalable, and secure apps built for the world’s most popular platform.', color: 'text-green-500' },
+    { icon: <FaApple />, title: 'iOS Development', desc: 'Elegant, high-performance apps for iPhones and iPads with native Swift/Obj-C.', color: 'text-gray-800' },
+    { icon: <FaTabletAlt />, title: 'Cross-Platform Apps', desc: 'React Native & Flutter apps for Android and iOS from a single codebase.', color: 'text-purple-600' },
+    { icon: <FaPalette />, title: 'UI/UX Design', desc: 'Delightful interfaces crafted for usability and engagement.', color: 'text-pink-500' },
+    { icon: <FaSyncAlt />, title: 'App Maintenance', desc: 'Ongoing support and updates to keep your app running smoothly.', color: 'text-yellow-500' },
+    { icon: <FaCloudUploadAlt />, title: 'Backend Integration', desc: 'APIs and cloud integrations that connect your app to the real world.', color: 'text-blue-500' },
+    { icon: <FaShieldAlt />, title: 'Security & Encryption', desc: 'GDPR-compliant development with secure authentication systems.', color: 'text-red-600' },
+    { icon: <FaSearch />, title: 'App Store Optimization', desc: 'Boost app visibility and installs with expert ASO strategies.', color: 'text-indigo-600' },
+    { icon: <FaBug />, title: 'Testing & QA', desc: 'Automated and manual testing for perfect performance.', color: 'text-amber-700' },
+    { icon: <FaRocket />, title: 'Launch & Scaling', desc: 'Seamless deployment and growth-ready architecture.', color: 'text-orange-600' },
   ];
 
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden">
-        {/* Grid Background */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-blue-50">
 
-        {/* Decorative Balls */}
-        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
-        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0 hidden md:block" />
-        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0 hidden md:block" />
+        {/* Grid Lines */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] z-0" />
 
-        {/* Content */}
-        <div className="relative z-10 py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-10 lg:px-20 max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-8 md:mb-10 transition-opacity duration-700 max-w-4xl mx-auto">
+        {/* Decorative Blurs */}
+        <div className="absolute w-[400px] h-[400px] bg-pink-300 opacity-20 rounded-full blur-3xl top-16 left-10 z-0 hidden md:block" />
+        <div className="absolute w-[300px] h-[300px] bg-indigo-200 opacity-30 rounded-full blur-2xl bottom-24 right-10 z-0 hidden md:block" />
+
+        {/* Content Section */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 mb-6 drop-shadow-md">
             Mobile App Development
           </h1>
-
-          <p className="max-w-3xl mx-auto text-center text-gray-700 text-base sm:text-lg md:text-xl mb-10 md:mb-12 transition-opacity duration-700">
-            We craft high-quality mobile applications with seamless performance, stunning design, and powerful functionality. Whether you’re a startup or enterprise, our apps scale with your vision.
+          <p className="text-center text-gray-700 max-w-3xl mx-auto text-base sm:text-lg md:text-xl mb-12">
+            From ideation to launch, we create elegant, powerful mobile applications that scale with your business.
           </p>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <div
                 key={index}
                 onClick={() => navigate(`/getquotes?topic=${encodeURIComponent(service.title)}`)}
-                className="cursor-pointer bg-white border border-pink-100 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
+                className="relative group cursor-pointer p-6 rounded-3xl border border-gray-200 bg-white/60 backdrop-blur-lg shadow-lg hover:scale-[1.03] hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-center justify-center mb-4">
-                  {service.icon}
+                <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-br from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-lg transition duration-300 z-0" />
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className={`w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center text-2xl mb-4 ${service.color}`}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{service.title}</h3>
+                  <p className="text-sm text-gray-600">{service.desc}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-pink-600 mb-2 text-center">{service.title}</h3>
-                <p className="text-gray-600 text-sm text-center">{service.desc}</p>
               </div>
             ))}
           </div>

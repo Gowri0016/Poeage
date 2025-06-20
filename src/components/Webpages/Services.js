@@ -51,7 +51,7 @@ export const Services = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative top-20 py-28 bg-gradient-to-br from-white via-sky-50 to-blue-100 min-h-screen text-gray-800 overflow-hidden">
+    <section className="relative py-28 bg-gradient-to-br from-white via-sky-50 to-blue-100 min-h-screen text-gray-800 overflow-hidden">
 
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,_rgba(0,0,0,0.03)_1px,_transparent_1px)] bg-[size:50px_50px]" />

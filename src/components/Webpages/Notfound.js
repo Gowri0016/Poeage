@@ -4,108 +4,106 @@ import { motion } from 'framer-motion';
 
 function Notfound() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-gray-800 to-gray-900 text-white overflow-hidden relative perspective-1000">
+    <div className="h-screen w-full bg-slate-950 text-white overflow-hidden flex items-center justify-center relative">
 
-      {/* Animated Floating Gradient Backdrop */}
+      {/* Animated Background Lights */}
       <motion.div
-        className="absolute w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/20 via-blue-500/10 to-transparent blur-3xl z-0"
+        className="absolute w-[200%] h-[200%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-700/20 via-blue-500/10 to-transparent blur-3xl"
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
+        transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
       />
 
-      {/* 3D 404 Title */}
-      <motion.h1
-        className="text-8xl sm:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-blue-500 to-purple-500 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] z-10"
-        initial={{ scale: 0.8, rotateX: 20, opacity: 0 }}
-        animate={{ scale: 1.05, rotateX: 0, opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 90, damping: 10 }}
-      >
-        404
-      </motion.h1>
+      {/* Top Glow Circle */}
+      <div className="absolute w-72 h-72 bg-pink-400 opacity-20 rounded-full blur-3xl top-10 left-10 animate-pulse" />
+      <div className="absolute w-60 h-60 bg-cyan-400 opacity-20 rounded-full blur-3xl bottom-10 right-10 animate-ping" />
 
-      {/* Subheading */}
-      <motion.h2
-        className="text-2xl sm:text-3xl font-medium mt-2 z-10 text-white/90"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-      >
-        Page Not Found
-      </motion.h2>
+      {/* Main Content */}
+      <div className="relative z-10 text-center px-6 max-w-2xl">
+        <motion.h1
+          initial={{ scale: 0.8, rotateX: 15, opacity: 0 }}
+          animate={{ scale: 1, rotateX: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          className="text-8xl sm:text-9xl font-extrabold bg-gradient-to-br from-pink-500 via-blue-500 to-violet-500 bg-clip-text text-transparent drop-shadow-lg"
+        >
+          404
+        </motion.h1>
 
-      {/* Description */}
-      <motion.p
-        className="text-center text-gray-400 mt-4 mb-10 px-6 max-w-md z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-      >
-        The page you're trying to reach doesn't exist or has been moved.
-      </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-2xl sm:text-3xl font-medium mt-4 text-white/90"
+        >
+          Lost in Space
+        </motion.h2>
 
-      {/* 3D-like Buttons */}
-      <motion.div
-        className="z-10 flex flex-col sm:flex-row items-center gap-4"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.2,
-              delayChildren: 1,
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-gray-400 mt-4 mb-10 text-base sm:text-lg"
+        >
+          The page you’re looking for has drifted away into the void. Let’s get you back to safety.
+        </motion.p>
+
+        {/* Button Group */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-4"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.2, delayChildren: 1 },
             },
-          },
-        }}
-      >
-        {[
-          {
-            text: "Go Back Home",
-            to: "/",
-            bg: "from-blue-600 via-indigo-600 to-purple-600",
-            border: "",
-            hover: "hover:scale-105 hover:shadow-blue-400",
-          },
-          {
-            text: "Take Me Home",
-            to: "/",
-            bg: "bg-transparent",
-            border: "border-2 border-blue-500",
-            hover: "hover:bg-blue-500 hover:text-white",
-          },
-          {
-            text: "Return to Safety",
-            to: "/",
-            bg: "bg-transparent",
-            border: "border-2 border-pink-600 text-pink-500",
-            hover: "hover:bg-pink-500 hover:text-white",
-          },
-        ].map((btn, i) => (
-          <motion.div
-            key={i}
-            className="relative group"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            whileHover={{ rotateY: 5, rotateX: 5 }}
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            <Link
-              to={btn.to}
-              className={`relative px-6 py-3 rounded-full font-semibold text-white shadow-lg transition-all duration-300 ${btn.bg} ${btn.border} ${btn.hover}`}
+          }}
+        >
+          {[
+            {
+              text: "Back to Home",
+              to: "/",
+              style: "bg-gradient-to-r from-blue-600 to-indigo-600",
+              hover: "hover:scale-105 hover:shadow-blue-400",
+            },
+            {
+              text: "Explore Services",
+              to: "/services",
+              style: "bg-transparent border-2 border-pink-500 text-pink-400",
+              hover: "hover:bg-pink-500 hover:text-white",
+            },
+            {
+              text: "Contact Support",
+              to: "/contact",
+              style: "bg-transparent border-2 border-cyan-500 text-cyan-400",
+              hover: "hover:bg-cyan-500 hover:text-white",
+            },
+          ].map((btn, i) => (
+            <motion.div
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{ rotateY: 5, rotateX: 5 }}
+              style={{ transformStyle: 'preserve-3d' }}
+              className="group relative"
             >
-              {btn.text}
-              {/* Floating Glow */}
-              <motion.span
-                className="absolute inset-0 blur-xl opacity-20 rounded-full"
-                animate={{ opacity: [0.2, 0.5, 0.2] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-              />
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+              <Link
+                to={btn.to}
+                className={`relative px-6 py-3 rounded-full font-semibold shadow-md transition-all duration-300 ${btn.style} ${btn.hover}`}
+              >
+                {btn.text}
+                {/* Inner Pulse Glow */}
+                <motion.span
+                  className="absolute inset-0 rounded-full opacity-20 blur-md group-hover:opacity-40 transition"
+                  animate={{ opacity: [0.2, 0.4, 0.2] }}
+                  transition={{ repeat: Infinity, duration: 2 }}
+                />
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

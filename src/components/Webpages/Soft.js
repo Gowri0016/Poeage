@@ -10,52 +10,52 @@ import {
 export default function Soft() {
   const features = [
     {
-      icon: <FaCode className="text-3xl text-blue-500" />,
+      icon: <FaCode />,
       title: "Custom Software",
       desc: "Tailored applications to match your unique business processes and goals.",
     },
     {
-      icon: <FaMobileAlt className="text-3xl text-cyan-500" />,
+      icon: <FaMobileAlt />,
       title: "Mobile Development",
       desc: "Native and hybrid mobile apps with responsive, modern user experiences.",
     },
     {
-      icon: <FaCloud className="text-3xl text-pink-500" />,
+      icon: <FaCloud />,
       title: "Cloud Integration",
       desc: "Scalable cloud solutions for flexibility, cost-efficiency, and performance.",
     },
     {
-      icon: <FaCogs className="text-3xl text-purple-500" />,
+      icon: <FaCogs />,
       title: "Automation Tools",
       desc: "Accelerate workflows and reduce manual tasks through smart automation.",
     },
     {
-      icon: <FaLock className="text-3xl text-red-500" />,
+      icon: <FaLock />,
       title: "Cybersecurity Solutions",
       desc: "Robust security systems and audits to protect your digital infrastructure.",
     },
     {
-      icon: <FaRobot className="text-3xl text-yellow-500" />,
+      icon: <FaRobot />,
       title: "AI & ML Integration",
       desc: "Intelligent software that learns, adapts, and evolves with your data.",
     },
     {
-      icon: <FaDatabase className="text-3xl text-indigo-500" />,
+      icon: <FaDatabase />,
       title: "Database Management",
       desc: "Secure, optimized, and scalable database solutions for structured data.",
     },
     {
-      icon: <FaTools className="text-3xl text-emerald-500" />,
+      icon: <FaTools />,
       title: "DevOps & CI/CD",
       desc: "Continuous integration and deployment pipelines for faster delivery.",
     },
     {
-      icon: <FaChartLine className="text-3xl text-sky-600" />,
+      icon: <FaChartLine />,
       title: "Data Analytics",
       desc: "Actionable insights from data using visualization, mining, and BI tools.",
     },
     {
-      icon: <FaRocket className="text-3xl text-orange-500" />,
+      icon: <FaRocket />,
       title: "Startup MVP Development",
       desc: "Rapid prototyping and lean MVP builds to validate your business idea.",
     },
@@ -64,22 +64,22 @@ export default function Soft() {
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-cyan-100 min-h-screen">
         {/* Grid Background */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-        {/* Decorative Balls */}
-        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
-        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0 hidden md:block" />
-        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0 hidden md:block" />
+        {/* Decorative Blurs */}
+        <div className="absolute w-[350px] h-[350px] bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
+        <div className="absolute w-[280px] h-[280px] bg-purple-300 opacity-30 rounded-full blur-2xl top-[65%] left-[70%] animate-bounce z-0 hidden md:block" />
+        <div className="absolute w-[240px] h-[240px] bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-10 right-10 animate-ping z-0 hidden md:block" />
 
-        {/* Content Section */}
-        <div className="relative z-10 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Content */}
+        <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500 mb-10"
+            className="text-4xl md:text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 mb-6"
           >
             Software Development Services
           </motion.h1>
@@ -90,24 +90,27 @@ export default function Soft() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="max-w-3xl mx-auto text-center text-gray-700 text-lg md:text-xl mb-12"
           >
-            From intelligent automation to enterprise-grade security, our software services are built to scale with your vision. We empower businesses with innovative, future-proof digital solutions.
+            From intelligent automation to enterprise-grade security, our software services are built to scale with your vision.
           </motion.p>
 
+          {/* Feature Cards */}
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                className="bg-white border border-blue-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white/60 backdrop-blur-xl border border-blue-100 rounded-2xl shadow-xl p-6 hover:scale-[1.03] transition-transform duration-300"
               >
-                <div className="flex items-center justify-center mb-4">
+                <div className="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 text-white text-2xl shadow-md mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-2 text-center">{feature.title}</h3>
-                <p className="text-gray-600 text-sm text-center">{feature.desc}</p>
+                <h3 className="text-lg font-bold text-center text-blue-800 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-600 text-center">{feature.desc}</p>
               </motion.div>
             ))}
           </div>

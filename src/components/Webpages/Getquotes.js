@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
+import { FaEnvelopeOpenText, FaPenFancy } from "react-icons/fa";
 
 const Getquotes = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -50,6 +51,7 @@ const Getquotes = () => {
       .send("service_5p6bb6j", "template_jepqzkk", formData, "ZDcUw7Mx4T6teZ1bG")
       .then(() => {
         setStatus({ sending: false, success: true });
+        setErrors({});
         setFormData({ name: "", email: "", phone: "", message: "" });
       })
       .catch(() => setStatus({ sending: false, success: false }));
@@ -58,64 +60,78 @@ const Getquotes = () => {
   return (
     <>
       <Header />
-      <div className="relative bg-transparent flex items-center justify-center sm:px-24 py-24" ref={formRef}>
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0" />
-        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0" />
-        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0" />
+      <div ref={formRef} className="min-h-screen bg-gradient-to-br from-white to-sky-50 flex flex-col lg:flex-row items-center justify-center p-6 md:p-16 relative overflow-hidden">
+        {/* Decorative Circles */}
+        <div className="absolute w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl -top-20 -left-20 animate-pulse z-0" />
+        <div className="absolute w-72 h-72 bg-blue-100/40 rounded-full blur-2xl top-[70%] left-[80%] animate-ping z-0" />
 
-        <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-white border border-blue-100 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl overflow-hidden transition duration-700 ease-out transform">
-          <div className="absolute top-0 left-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-100 to-transparent rounded-br-full z-0" />
-          <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tl from-blue-100 to-transparent rounded-tl-full z-0" />
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-6 sm:mb-8 relative z-10 transition-opacity duration-700">
-            Request a Quote
+        {/* Left Text */}
+        <div className="lg:w-1/2 z-10 text-center lg:text-left mb-10 lg:mb-0">
+          <h1 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">
+            Let's Get You a Quote
           </h1>
-          <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-blue-900">
-            {[{ name: "name", label: "Full Name" }, { name: "email", label: "Email", type: "email" }, { name: "phone", label: "Contact Number" }].map(({ name, label, type = "text" }) => (
-              <div key={name} className="w-full">
-                <label className="block text-sm md:text-base font-medium mb-2">{label}</label>
+          <p className="mt-4 text-lg text-gray-600">Tell us what you’re looking for, and we’ll respond quickly with a personalized offer.</p>
+          <div className="mt-8 flex justify-center lg:justify-start space-x-4 text-cyan-600 text-4xl">
+            <FaEnvelopeOpenText className="animate-bounce" />
+            <FaPenFancy className="animate-spin-slow" />
+          </div>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="lg:w-1/2 w-full bg-white rounded-3xl shadow-xl z-10 p-6 md:p-10 border border-blue-100"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { name: "name", label: "Full Name" },
+              { name: "email", label: "Email", type: "email" },
+              { name: "phone", label: "Contact Number" },
+            ].map(({ name, label, type = "text" }) => (
+              <div key={name}>
+                <label className="block font-medium text-blue-900 mb-1">{label}</label>
                 <input
                   type={type}
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
-                  className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${errors[name] ? "border-red-500" : "border-blue-300 focus:ring-blue-400"} focus:outline-none focus:ring-2 transition duration-150`}
+                  className={`w-full px-4 py-3 rounded-lg border ${errors[name] ? "border-red-500" : "border-blue-200"} focus:outline-none focus:ring-2 focus:ring-blue-400 transition`}
                   placeholder={label}
                 />
-                {errors[name] && <p className="text-red-600 text-sm mt-1">{errors[name]}</p>}
+                {errors[name] && <p className="text-sm text-red-600 mt-1">{errors[name]}</p>}
               </div>
             ))}
-
             <div className="md:col-span-2">
-              <label className="block text-sm md:text-base font-medium mb-2">Message</label>
+              <label className="block font-medium text-blue-900 mb-1">Message</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows="4"
-                placeholder="Enter your message"
-                className={`w-full px-4 md:px-5 py-3 md:py-3.5 text-sm md:text-base rounded-lg border ${errors.message ? "border-red-500" : "border-blue-300 focus:ring-blue-400"} focus:outline-none focus:ring-2 resize-none transition duration-150`}
+                placeholder="Describe your need"
+                className={`w-full px-4 py-3 rounded-lg border ${errors.message ? "border-red-500" : "border-blue-200"} focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none transition`}
               />
-              {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+              {errors.message && <p className="text-sm text-red-600 mt-1">{errors.message}</p>}
             </div>
+          </div>
 
-            <div className="md:col-span-2 flex justify-center mt-6">
-              <button
-                type="submit"
-                disabled={status.sending}
-                className={`w-full sm:w-auto px-10 md:px-12 py-3 md:py-3.5 text-white text-lg md:text-xl font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-700 hover:to-cyan-600 rounded-full shadow-md transition transform hover:scale-105 active:scale-95 ${status.sending ? "opacity-50 cursor-not-allowed" : ""}`}
-              >
-                {status.sending ? "Sending..." : "Send Request"}
-              </button>
-            </div>
-
+          <div className="mt-6 text-center">
+            <button
+              type="submit"
+              disabled={status.sending}
+              className={`px-10 py-3 text-white text-lg font-semibold rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-600 hover:to-cyan-500 shadow-md transition transform hover:scale-105 active:scale-95 ${
+                status.sending ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {status.sending ? "Sending..." : "Send Request"}
+            </button>
             {status.success !== null && (
-              <p className={`md:col-span-2 text-center mt-4 transition-opacity duration-500 ${status.success ? "text-green-600" : "text-red-600"}`}>
+              <p role="alert" className={`mt-4 text-sm ${status.success ? "text-green-600" : "text-red-600"}`}>
                 {status.success ? "✅ Your quote has been sent!" : "❌ Failed to send. Try again later."}
               </p>
             )}
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </>
   );

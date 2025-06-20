@@ -1,19 +1,27 @@
+// your imports remain unchanged
 import React, { useState } from "react";
 import { Header } from "./Header";
 import Footer from "./Footer";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 
+// Enhanced Domain Button with glow and ripple
 const DomainButton = React.memo(({ language, selected, onClick }) => (
-  <button
+  <motion.button
+    whileHover={{ scale: 1.07 }}
+    whileTap={{ scale: 0.95 }}
     onClick={onClick}
-    className={`py-2 px-4 text-sm sm:text-base rounded-full font-medium shadow-md transition-all duration-300 transform focus:outline-none ${
-      selected
-        ? "bg-gradient-to-r from-cyan-600 to-blue-500 text-white scale-105"
-        : "bg-white text-gray-800 border border-gray-300 hover:border-purple-400 hover:scale-105"
-    }`}
+    className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 border backdrop-blur-md shadow-md
+      ${selected
+        ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+        : "bg-white/60 text-blue-900 border-blue-200 hover:border-cyan-500"
+      }`}
   >
     {language}
-  </button>
+    {selected && (
+      <span className="absolute top-0 left-0 w-full h-full rounded-full bg-cyan-400 opacity-20 animate-ping"></span>
+    )}
+  </motion.button>
 ));
 
 const InternshipPage = () => {
@@ -80,25 +88,31 @@ const InternshipPage = () => {
     <>
       <Header />
 
-      {/* Decorative Background */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,rgba(200,200,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      {/* Soft Cyan/Blue Grid Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-100 via-blue-50 to-white" />
 
-
-      <main className="relative z-10 py-16 px-4 sm:px-6 md:px-10 bg-transparent min-h-screen">
-        <section className="text-center mb-10 max-w-2xl mx-auto">
-          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-500 bg-clip-text text-transparent">
+      <main className="relative z-10 min-h-screen py-16 px-6 bg-white/60 backdrop-blur-lg">
+        {/* Heading */}
+        <motion.section
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">
             Internship Opportunities at Poeage
           </h1>
-          <p className="mt-4 text-gray-700">
-            Work on live projects, gain industry exposure, and earn a certificate from an ISO-certified company.
+          <p className="mt-4 text-gray-600 text-base max-w-xl mx-auto">
+            Work on real-time projects, gain industry experience, and get certified by an ISO-verified company.
           </p>
-        </section>
+        </motion.section>
 
-        <section className="max-w-2xl mx-auto mb-12">
-          <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
+        {/* Domains */}
+        <section className="mb-12 max-w-3xl mx-auto text-center">
+          <h2 className="text-xl font-semibold text-blue-800 mb-6">
             Choose Your Preferred Domain
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
             {domains.map((domain, index) => (
               <DomainButton
                 key={index}
@@ -110,12 +124,11 @@ const InternshipPage = () => {
           </div>
         </section>
 
-        <section className="max-w-2xl mx-auto bg-white border border-purple-200 rounded-2xl p-8 shadow-lg">
+        {/* Form */}
+        <section className="max-w-3xl mx-auto bg-white/90 border border-blue-100 shadow-lg rounded-2xl p-8">
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-semibold text-cyan-600">Apply Now</h3>
-            <p className="text-gray-500 mt-1 text-sm">
-              Fill out your details and our team will get in touch soon.
-            </p>
+            <h3 className="text-2xl font-semibold text-blue-600">Apply Now</h3>
+            <p className="text-gray-500 text-sm">Our team will reach out shortly.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="grid gap-6">
@@ -125,18 +138,18 @@ const InternshipPage = () => {
               { name: "contactNumber", label: "Contact Number" },
             ].map(({ name, label, type = "text" }) => (
               <div key={name}>
-                <label className="block text-sm font-medium mb-1 text-gray-700">{label}</label>
+                <label className="block mb-1 text-sm font-medium text-blue-700">{label}</label>
                 <input
                   type={type}
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
                   placeholder={label}
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    errors[name] ? "border-red-500" : "border-purple-300"
-                  } focus:outline-none focus:ring-2 ${
-                    errors[name] ? "focus:ring-red-400" : "focus:ring-purple-400"
-                  } transition`}
+                  className={`w-full px-4 py-3 rounded-xl border transition-all duration-200 focus:outline-none focus:ring-2 ${
+                    errors[name]
+                      ? "border-red-500 focus:ring-red-400"
+                      : "border-blue-200 focus:ring-cyan-400"
+                  }`}
                 />
                 {errors[name] && (
                   <p className="text-red-600 text-xs mt-1">{errors[name]}</p>
@@ -144,45 +157,51 @@ const InternshipPage = () => {
               </div>
             ))}
 
+            {/* Message Field */}
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">Message</label>
+              <label className="block mb-1 text-sm font-medium text-blue-700">Message</label>
               <textarea
                 name="message"
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Enter your message"
-                className={`w-full px-4 py-2 rounded-lg border ${
-                  errors.message ? "border-red-500" : "border-purple-300"
-                } focus:outline-none focus:ring-2 ${
-                  errors.message ? "focus:ring-red-400" : "focus:ring-purple-400"
-                } resize-none transition`}
+                placeholder="Tell us about your interest..."
+                className={`w-full px-4 py-3 rounded-xl border resize-none transition-all duration-200 focus:outline-none focus:ring-2 ${
+                  errors.message
+                    ? "border-red-500 focus:ring-red-400"
+                    : "border-blue-200 focus:ring-cyan-400"
+                }`}
               />
               {errors.message && (
                 <p className="text-red-600 text-xs mt-1">{errors.message}</p>
               )}
             </div>
 
-            <button
+            {/* CTA */}
+            <motion.button
               type="submit"
               disabled={status.sending}
-              className={`w-full py-3 text-white font-semibold rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-pink-600 hover:to-purple-600 transition ${
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className={`w-full py-3 rounded-full text-white font-bold bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-purple-500 shadow-lg transition-all duration-300 ${
                 status.sending ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
               {status.sending ? "Sending..." : "Submit Application"}
-            </button>
+            </motion.button>
 
             {status.success !== null && (
-              <p
-                className={`text-center text-sm mt-2 ${
+              <motion.p
+                className={`text-center text-sm mt-3 font-medium ${
                   status.success ? "text-green-600" : "text-red-600"
                 }`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
               >
                 {status.success
-                  ? "✅ Your application has been sent!"
+                  ? "✅ Application sent successfully!"
                   : "❌ Failed to send. Please try again later."}
-              </p>
+              </motion.p>
             )}
           </form>
         </section>
