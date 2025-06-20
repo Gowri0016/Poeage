@@ -57,7 +57,7 @@ const Footer = () => {
               alt="Poeage Corporation"
               className="h-20 w-56 mb-4 mx-auto lg:mx-0"
             />
-            <h2 className="text-3xl">Poeage IT Solution.Pvt.Ltd</h2>
+            <h2 className="text-3xl">Poeage Tech.Pvt.Ltd</h2>
             <p className="text-gray-400 mt-2">
               Leading IT solutions for your business growth.
             </p>

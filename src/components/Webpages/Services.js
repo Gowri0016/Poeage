@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// import Pro from '../../assets/logo.png';
 import {
   FaRobot, FaLaptopCode, FaMobileAlt, FaToolbox, FaQuoteLeft,
 } from 'react-icons/fa';
@@ -51,54 +50,41 @@ const testimonials = [
 export const Services = () => {
   const navigate = useNavigate();
 
-  const cardMotion = {
-    initial: { opacity: 0, y: 60, rotate: -2 },
-    whileInView: { opacity: 1, y: 0, rotate: 0 },
-    transition: (i) => ({ delay: i * 0.15, duration: 0.7, type: 'spring' }),
-  };
-
   return (
-    <section className="relative top-20 py-24 min-h-screen bg-white text-gray-800 overflow-hidden">
+    <section className="relative top-20 py-28 bg-gradient-to-br from-white via-sky-50 to-blue-100 min-h-screen text-gray-800 overflow-hidden">
 
-      {/* Grid Background */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-      {/* Decorative Balls */}
-      <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0" />
-      <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0" />
-      <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0" />
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,_rgba(0,0,0,0.03)_1px,_transparent_1px)] bg-[size:50px_50px]" />
+      <div className="absolute top-10 left-10 w-80 h-80 bg-pink-300 opacity-30 blur-[120px] rounded-full z-0" />
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-sky-200 opacity-30 blur-[100px] rounded-full z-0" />
 
       {/* Heading */}
       <motion.h1
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="text-4xl sm:text-5xl font-extrabold text-center text-gray-800 mb-20"
+        className="text-4xl sm:text-5xl font-extrabold text-center text-gray-900 mb-20 drop-shadow-md"
       >
-        Explore Our Development Services
+        Explore Our Core Services
       </motion.h1>
 
-      {/* Service Cards */}
+      {/* Services Grid */}
       <div className="relative z-10 flex flex-wrap justify-center gap-12 px-6 mb-24">
         {services.map((service, i) => (
-        <motion.div
-  key={i}
-  initial={{ x: -100, opacity: 0, skew: 8 }}
-  whileInView={{ x: 0, opacity: 1, skew: 0 }}
-  transition={{ type: 'spring', stiffness: 100, delay: i * 0.2  }}
-  viewport={{ once: true }}
-  onClick={() => navigate(service.path)}
-  whileHover={{ scale: 1.1, rotate: 0.5 }}
-  className="cursor-pointer w-[270px] sm:w-[300px] rounded-[30px] p-6 backdrop-blur-xl border border-gray-200 bg-white shadow-lg transition-all duration-500"
->
-  
-            <div
-              className={`absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-br ${service.gradient} shadow-md flex items-center justify-center text-white text-2xl`}
-            >
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: i * 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            onClick={() => navigate(service.path)}
+            className="cursor-pointer relative group w-[280px] sm:w-[300px] rounded-[30px] p-6 bg-white border border-gray-200 shadow-xl backdrop-blur-lg transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
+          >
+            <div className={`absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-br ${service.gradient} shadow-md flex items-center justify-center text-white text-2xl`}>
               {React.cloneElement(service.icon, { className: 'w-6 h-6' })}
             </div>
             <div className="mt-12 text-center">
-              <h3 className="text-xl font-bold">{service.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-800">{service.title}</h3>
               <p className="text-sm text-gray-600 mt-2">
                 Click to explore our {service.title.toLowerCase()} solutions.
               </p>
@@ -107,30 +93,25 @@ export const Services = () => {
         ))}
       </div>
 
-      {/* About Us Section */}
+      {/* About Poeage Section */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-5xl mx-auto mb-24 px-6"
+        className="max-w-5xl mx-auto px-6 mb-24 z-10"
       >
-        <div className="bg-gradient-to-r from-white to-cyan-50 shadow-xl rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-gray-200">
-          
-          <div className="flex-1 text-center md:text-left">
-            <h2 className="text-3xl font-bold mb-4 text-gray-800">
-              About <span className="text-cyan-600">Poeage IT Solution</span>
-            </h2>
-            <p className="text-gray-700 text-lg">
-              Founded on <strong>October 31, 2023</strong>, Poeage IT Solution is dedicated to delivering cutting-edge web, app, and AI solutions with creativity and precision.
-              <br className="hidden sm:block" />
-              Our mission is to empower businesses through smart, scalable digital transformation.
-            </p>
-          </div>
+        <div className="rounded-3xl bg-white/70 shadow-xl p-8 md:p-12 border border-gray-100 backdrop-blur-xl">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center md:text-left">
+            About <span className="text-sky-600">Poeage IT Solution</span>
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed text-center md:text-left">
+            Founded on <strong>October 31, 2023</strong>, Poeage IT Solution is a passionate digital company building impactful web, app, and AI solutions. We combine innovation with industry experience to help your business succeed through scalable, high-quality software products.
+          </p>
         </div>
       </motion.div>
 
-      {/* Testimonials Section */}
+      {/* Testimonials */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -138,19 +119,19 @@ export const Services = () => {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto px-6"
       >
-        <h2 className="text-3xl font-bold text-center mb-12">What Clients Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">What Our Clients Say</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
-              className="bg-white p-6 shadow-xl rounded-xl border border-gray-200"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2, duration: 0.5 }}
               viewport={{ once: true }}
+              className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-xl transition duration-300"
             >
-              <FaQuoteLeft className="text-cyan-500 text-2xl mb-3" />
-              <p className="text-gray-700 italic">"{t.quote}"</p>
+              <FaQuoteLeft className="text-sky-500 text-2xl mb-3" />
+              <p className="italic text-gray-700">"{t.quote}"</p>
               <p className="mt-4 font-semibold text-gray-900">– {t.name}</p>
             </motion.div>
           ))}

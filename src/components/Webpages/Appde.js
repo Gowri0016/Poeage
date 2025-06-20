@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from './Header';
 import Footer from './Footer';
 import {
@@ -15,6 +16,8 @@ import {
 } from 'react-icons/fa';
 
 export default function Appde() {
+  const navigate = useNavigate();
+
   const services = [
     { icon: <FaAndroid className="text-3xl text-green-600" />, title: 'Android Development', desc: 'Robust, scalable, and secure apps built for the world’s most popular platform.' },
     { icon: <FaApple className="text-3xl text-gray-700" />, title: 'iOS Development', desc: 'Elegant, high-performance apps for iPhones and iPads with native Swift/Obj-C.' },
@@ -54,7 +57,8 @@ export default function Appde() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white border border-pink-100 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
+                onClick={() => navigate(`/getquotes?topic=${encodeURIComponent(service.title)}`)}
+                className="cursor-pointer bg-white border border-pink-100 rounded-xl p-6 shadow-lg hover:shadow-xl hover:scale-[1.03] transition-all duration-300"
               >
                 <div className="flex items-center justify-center mb-4">
                   {service.icon}

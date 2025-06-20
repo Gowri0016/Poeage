@@ -11,94 +11,82 @@ import { useNavigate } from 'react-router-dom';
 export const Home = () => {
   const navigate = useNavigate();
 
-  function handleClick() {
+  const handleClick = () => {
     navigate('/quotes');
-  }
+  };
 
   const socialLinks = [
     {
       platform: 'Twitter',
       url: 'https://x.com/PoeageCom',
       Icon: TwitterIcon,
-      color: 'text-blue-400',
+      color: 'hover:text-blue-400',
     },
     {
       platform: 'Facebook',
       url: 'https://www.facebook.com/share/1Gcq6JPLpL/',
       Icon: FacebookIcon,
-      color: 'text-blue-500',
+      color: 'hover:text-blue-500',
     },
     {
       platform: 'Linkedin',
       url: 'https://www.linkedin.com/in/g-gowri-shankar',
       Icon: LinkedinIcon,
-      color: 'text-blue-600',
+      color: 'hover:text-blue-600',
     },
     {
       platform: 'Instagram',
       url: 'https://www.instagram.com/poeage__com?igsh=MTljMmMyanY4dDlsbw==',
       Icon: InstagramIcon,
-      color: 'text-pink-500',
+      color: 'hover:text-pink-500',
     },
   ];
 
   return (
-  <div
-  style={{
-    backgroundColor: '#ffffff', // solid white background
-    backgroundImage:
-      'linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)',
-    backgroundSize: '40px 40px',
-    minHeight: '100vh',
-  }}
->
-  <div className="relative top-24 z-10 flex flex-col justify-center items-center w-full min-h-screen px-4 text-center space-y-6 md:space-y-10 max-w-screen-md mx-auto">
-<h1
-  className="
-    text-3xl sm:text-4xl md:text-5xl
-    font-extrabold font-inter
-    inline-block
-    bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))]
-    from-blue-600 via-blue-500 to-indigo-600
-    bg-clip-text text-transparent
-    drop-shadow
-  "
->
-  Crafting Digital Experiences with Impact
-</h1>
+    <div
+      className="min-h-screen w-full bg-white"
+      style={{
+        backgroundImage:
+          'linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)',
+        backgroundSize: '40px 40px',
+      }}
+    >
+      <div className="relative top-24 z-10 flex flex-col justify-center items-center w-full px-4 text-center space-y-8 max-w-4xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-inter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-600 bg-clip-text text-transparent drop-shadow-lg">
+          Business software is our craft
+        </h1>
 
-<h2
-  className="
-    font-extrabold text-xl md:text-2xl
-    bg-black
-    bg-clip-text text-transparent
-    font-inter
-  
-    animate-bounce
-    transition
-  "
-  style={{
-    textShadow: '0 2px 12px rgba(0, 255, 255, 0.15)',
-  }}
->
-  Design. Develop. Deliver.
-</h2>
+        <h2 className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent animate-bounce">
+          Design. Develop. Deliver.
+        </h2>
 
-   
-   <p
-  className="
-    max-w-2xl text-lg sm:text-xl md:text-2xl font-medium leading-relaxed
-    inline-block
-    bg-gradient-to-t from-orange-500 via-blue-500 to-teal-500
-    text-transparent bg-clip-text
-  "
- 
->
-  At <span className="font-bold text-cyan-500">Poeage</span>, we blend clean code with captivating design to build memorable digital products. From intuitive interfaces to sleek animations, every pixel is crafted with purpose.
-</p>
+        <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-medium bg-gradient-to-r from-orange-500 via-blue-500 to-teal-500 text-transparent bg-clip-text">
+          At <span className="font-bold text-cyan-500">Poeage</span>, we blend clean code with captivating design to build memorable digital products. From intuitive interfaces to sleek animations, every pixel is crafted with purpose.
+        </p>
 
-    {/* ...rest of your code */}
-  </div>
-</div>
-  )
-}
+        <button
+          onClick={handleClick}
+          className="mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+          Get a Quote
+          <ArrowRightCircle className="w-5 h-5" />
+        </button>
+
+        <div className="flex justify-center gap-6 mt-8">
+          {socialLinks.map(({ platform, url, Icon, color }) => (
+            <a
+              key={platform}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-10 h-10 rounded-full flex items-center justify-center text-gray-700 bg-white shadow hover:scale-110 transition-all duration-300 ${color}`}
+              title={platform}
+            >
+              <Icon className="w-5 h-5" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

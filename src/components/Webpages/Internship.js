@@ -3,14 +3,13 @@ import { Header } from "./Header";
 import Footer from "./Footer";
 import emailjs from "emailjs-com";
 
-// Domain selection button (memoized for performance)
 const DomainButton = React.memo(({ language, selected, onClick }) => (
   <button
     onClick={onClick}
-    className={`py-2 px-3 text-xs sm:text-sm rounded-lg font-medium shadow-sm transition-all ${
+    className={`py-2 px-4 text-sm sm:text-base rounded-full font-medium shadow-md transition-all duration-300 transform focus:outline-none ${
       selected
-        ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white border border-blue-700 scale-105"
-        : "bg-white text-gray-800 border border-gray-300 hover:border-blue-400"
+        ? "bg-gradient-to-r from-cyan-600 to-blue-500 text-white scale-105"
+        : "bg-white text-gray-800 border border-gray-300 hover:border-purple-400 hover:scale-105"
     }`}
   >
     {language}
@@ -71,6 +70,7 @@ const InternshipPage = () => {
       )
       .then(() => {
         setFormData({ name: "", email: "", contactNumber: "", message: "" });
+        setSelectedDomain("");
         setStatus({ sending: false, success: true });
       })
       .catch(() => setStatus({ sending: false, success: false }));
@@ -80,33 +80,25 @@ const InternshipPage = () => {
     <>
       <Header />
 
-       {/* Grid Background */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-        {/* Decorative Balls */}
-        <div className="absolute w-96 h-96 bg-pink-300 opacity-30 rounded-full blur-3xl top-10 left-10 animate-pulse z-0 hidden md:block" />
-        <div className="absolute w-72 h-72 bg-red-200 opacity-30 rounded-full blur-2xl top-[60%] left-[70%] animate-bounce z-0 hidden md:block" />
-        <div className="absolute w-60 h-60 bg-cyan-300 opacity-30 rounded-full blur-2xl bottom-20 right-10 animate-ping z-0 hidden md:block" />
+      {/* Decorative Background */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle,rgba(200,200,255,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
 
-      <main className="relative min-h-screen bg-transparent py-10 px-4 sm:px-6 md:px-10">
-
-        {/* Intro */}
+      <main className="relative z-10 py-16 px-4 sm:px-6 md:px-10 bg-transparent min-h-screen">
         <section className="text-center mb-10 max-w-2xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-cyan-600 to-blue-500 bg-clip-text text-transparent">
             Internship Opportunities at Poeage
           </h1>
-          <p className="mt-4 text-gray-700 text-sm sm:text-base">
+          <p className="mt-4 text-gray-700">
             Work on live projects, gain industry exposure, and earn a certificate from an ISO-certified company.
           </p>
         </section>
 
-        {/* Domain Selection */}
-        <div className="max-w-xl mx-auto mb-12">
+        <section className="max-w-2xl mx-auto mb-12">
           <h2 className="text-xl font-semibold text-center mb-4 text-gray-800">
             Choose Your Preferred Domain
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center">
             {domains.map((domain, index) => (
               <DomainButton
                 key={index}
@@ -116,35 +108,34 @@ const InternshipPage = () => {
               />
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Form */}
-        <section className="max-w-xl mx-auto bg-white border border-blue-200 rounded-lg p-5 sm:p-8 shadow-xl">
-          <div className="text-center mb-5">
-            <h3 className="text-xl font-semibold">Apply Now</h3>
-            <p className="text-gray-600 text-sm sm:text-base mt-1">
-              Submit your details to join the internship program.
+        <section className="max-w-2xl mx-auto bg-white border border-purple-200 rounded-2xl p-8 shadow-lg">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl font-semibold text-cyan-600">Apply Now</h3>
+            <p className="text-gray-500 mt-1 text-sm">
+              Fill out your details and our team will get in touch soon.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
+          <form onSubmit={handleSubmit} className="grid gap-6">
             {[
               { name: "name", label: "Full Name" },
               { name: "email", label: "Email", type: "email" },
               { name: "contactNumber", label: "Contact Number" },
             ].map(({ name, label, type = "text" }) => (
               <div key={name}>
-                <label className="text-sm font-medium">{label}</label>
+                <label className="block text-sm font-medium mb-1 text-gray-700">{label}</label>
                 <input
                   type={type}
                   name={name}
                   value={formData[name]}
                   onChange={handleChange}
                   placeholder={label}
-                  className={`w-full mt-1 px-4 py-2 rounded-md border ${
-                    errors[name] ? "border-red-500" : "border-blue-300"
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    errors[name] ? "border-red-500" : "border-purple-300"
                   } focus:outline-none focus:ring-2 ${
-                    errors[name] ? "focus:ring-red-400" : "focus:ring-blue-400"
+                    errors[name] ? "focus:ring-red-400" : "focus:ring-purple-400"
                   } transition`}
                 />
                 {errors[name] && (
@@ -154,17 +145,17 @@ const InternshipPage = () => {
             ))}
 
             <div>
-              <label className="text-sm font-medium">Message</label>
+              <label className="block text-sm font-medium mb-1 text-gray-700">Message</label>
               <textarea
                 name="message"
                 rows="4"
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Enter your message"
-                className={`w-full mt-1 px-4 py-2 rounded-md border ${
-                  errors.message ? "border-red-500" : "border-blue-300"
+                className={`w-full px-4 py-2 rounded-lg border ${
+                  errors.message ? "border-red-500" : "border-purple-300"
                 } focus:outline-none focus:ring-2 ${
-                  errors.message ? "focus:ring-red-400" : "focus:ring-blue-400"
+                  errors.message ? "focus:ring-red-400" : "focus:ring-purple-400"
                 } resize-none transition`}
               />
               {errors.message && (
@@ -175,22 +166,22 @@ const InternshipPage = () => {
             <button
               type="submit"
               disabled={status.sending}
-              className={`w-full py-2.5 text-white font-semibold rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 transition ${
+              className={`w-full py-3 text-white font-semibold rounded-full bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-pink-600 hover:to-purple-600 transition ${
                 status.sending ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {status.sending ? "Sending..." : "Send Request"}
+              {status.sending ? "Sending..." : "Submit Application"}
             </button>
 
             {status.success !== null && (
               <p
-                className={`text-center text-sm ${
+                className={`text-center text-sm mt-2 ${
                   status.success ? "text-green-600" : "text-red-600"
                 }`}
               >
                 {status.success
                   ? "✅ Your application has been sent!"
-                  : "❌ Failed to send. Try again later."}
+                  : "❌ Failed to send. Please try again later."}
               </p>
             )}
           </form>
