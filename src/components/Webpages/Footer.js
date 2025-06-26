@@ -36,7 +36,7 @@ const Footer = () => {
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
               Welcome to{" "}
               <span className="text-cyan-500 font-semibold hover:text-cyan-300">
-                Poeage IT Solution
+                Poeage Technology
               </span>
               , your trusted partner in innovative web development and IT solutions.
             </p>
@@ -57,9 +57,9 @@ const Footer = () => {
               alt="Poeage Corporation"
               className="h-20 w-56 mb-4 mx-auto lg:mx-0"
             />
-            <h2 className="text-3xl">Poeage Tech.Pvt.Ltd</h2>
+            <h2 className="text-3xl">Poeage Technology Pvt.Ltd</h2>
             <p className="text-gray-400 mt-2">
-              Leading IT solutions for your business growth.
+              Empowering innovation to elevate your business to new heights.
             </p>
           </div>
 
