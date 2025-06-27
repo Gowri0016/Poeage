@@ -103,10 +103,10 @@ export const Services = () => {
       >
         <div className="rounded-3xl bg-white/70 shadow-xl p-8 md:p-12 border border-gray-100 backdrop-blur-xl">
           <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center md:text-left">
-            About <span className="text-sky-600">Poeage Tech</span>
+            About <span className="text-sky-600">Poeage Technology</span>
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed text-center md:text-left">
-            Founded on <strong>October 31, 2023</strong>, Poeage IT Solution is a passionate digital company building impactful web, app, and AI solutions. We combine innovation with industry experience to help your business succeed through scalable, high-quality software products.
+            Founded on <strong>October 31, 2023</strong>, Poeage Technology is a passionate digital company building impactful web, app, and AI solutions. We combine innovation with industry experience to help your business succeed through scalable, high-quality software products.
           </p>
         </div>
       </motion.div>
