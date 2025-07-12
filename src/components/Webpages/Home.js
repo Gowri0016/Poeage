@@ -27,7 +27,7 @@ export const Home = () => {
     },
     {
       platform: 'Linkedin',
-      url: 'https://www.linkedin.com/in/g-gowri-shankar',
+      url: 'https://www.linkedin.com/in/poeage',
       Icon: LinkedinIcon,
       color: 'hover:text-blue-600',
     },
