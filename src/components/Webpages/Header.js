@@ -28,7 +28,7 @@ export const Header = () => {
           <motion.img
             src={navbar.logo}
             alt="Logo"
-            className="h-12 drop-shadow-md"
+            className="h-32 drop-shadow-md"
           />
         </a>
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DContext } from "../Datacontext/Datacontext.js";
-import logo from "../../assests/logo.png";
+import logo from "../../assests/Poeage_Logo_10.png";
 import {
   Facebook,
   Instagram,
@@ -59,7 +59,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Poeage Logo"
-              className="h-24 w-auto mb-4 mx-auto lg:mx-0 drop-shadow-lg"
+              className="h-32 w-auto mb-4 mx-auto lg:mx-0 drop-shadow-lg"
             />
             <h3 className="text-2xl font-bold">Poeage Technology Pvt. Ltd</h3>
             <p className="text-gray-400 mt-2">

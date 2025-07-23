@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import Logo from '../../assests/logo.png'
+import Logo from '../../assests/Poeage_Logo_10.png'
 export const DContext = createContext();
 
 function Datacontext(props) {
