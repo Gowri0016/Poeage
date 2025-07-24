@@ -111,7 +111,7 @@ const Footer = () => {
               <div className="flex justify-center lg:justify-start space-x-4">
                 {[
                   { Icon: Linkedin, href: "https://www.linkedin.com/in/poeage" },
-                  { Icon: Instagram, href: "https://www.instagram.com/poeage__com" },
+                  { Icon: Instagram, href: "https://www.instagram.com/poeage_technology?igsh=MTljMmMyanY4dDlsbw==" },
                   { Icon: Twitter, href: "https://x.com/PoeageCom" },
                   { Icon: Facebook, href: "https://www.facebook.com/share/1BjULrjR2w/" },
                 ].map(({ Icon, href }, idx) => (

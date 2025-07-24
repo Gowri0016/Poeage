@@ -33,7 +33,7 @@ export const Home = () => {
     },
     {
       platform: 'Instagram',
-      url: 'https://www.instagram.com/poeage__com?igsh=MTljMmMyanY4dDlsbw==',
+      url: 'https://www.instagram.com/poeage_technology?igsh=MTljMmMyanY4dDlsbw==',
       Icon: InstagramIcon,
       color: 'hover:text-pink-500',
     },
