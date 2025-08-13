@@ -59,7 +59,7 @@ const Footer = () => {
             <img
               src={logo}
               alt="Poeage Logo"
-              className="h-32 w-auto mb-4 mx-auto lg:mx-0 drop-shadow-lg"
+              className="w-40 mb-4 mx-auto lg:mx-0 drop-shadow-lg"
             />
             <h3 className="text-2xl font-bold">Poeage Technology Pvt. Ltd</h3>
             <p className="text-gray-400 mt-2">
@@ -83,7 +83,25 @@ const Footer = () => {
                   </li>
                 ))
               ) : (
-                <li className="text-gray-500">No links available</li>
+              <div className="flex justify-center lg:justify-start space-x-4">
+                {[
+                  { Icon: Linkedin, href: "https://www.linkedin.com/in/poeage" },
+                  { Icon: Instagram, href: "https://www.instagram.com/poeage_technology?igsh=MTljMmMyanY4dDlsbw==" },
+                  { Icon: Twitter, href: "https://x.com/PoeageCom" },
+                  { Icon: Facebook, href: "https://www.facebook.com/share/1BjULrjR2w/" },
+                ].map(({ Icon, href }, idx) => (
+                  <a
+                    key={idx}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-cyan-400 transition-transform hover:scale-110"
+                  >
+                    <Icon size={26} />
+                  </a>
+                ))}
+              </div>
+
               )}
             </ul>
           </div>
@@ -105,29 +123,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Social */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-              <div className="flex justify-center lg:justify-start space-x-4">
-                {[
-                  { Icon: Linkedin, href: "https://www.linkedin.com/in/poeage" },
-                  { Icon: Instagram, href: "https://www.instagram.com/poeage_technology?igsh=MTljMmMyanY4dDlsbw==" },
-                  { Icon: Twitter, href: "https://x.com/PoeageCom" },
-                  { Icon: Facebook, href: "https://www.facebook.com/share/1BjULrjR2w/" },
-                ].map(({ Icon, href }, idx) => (
-                  <a
-                    key={idx}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-cyan-400 transition-transform hover:scale-110"
-                  >
-                    <Icon size={26} />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+           </div>
         </div>
 
         {/* Copyright */}

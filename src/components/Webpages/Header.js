@@ -1,15 +1,15 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
-import { DContext } from '../Datacontext/Datacontext';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaCaretDown, FaBars, FaTimes, FaBriefcase } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from '../../assests/Poeage_Logo_10.png'
 
 export const Header = () => {
-  const { navbar } = useContext(DContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  const capitalizeFirst = (str) =>
+    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -26,15 +26,15 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 h-12 md:h-16">
         <a href="/" className="flex items-center gap-2">
           <motion.img
-            src={navbar.logo}
+            src={Logo} // Replace with your actual logo path
             alt="Logo"
-            className="h-32 drop-shadow-md"
+            className="w-40 drop-shadow-md"
           />
         </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-10 text-white font-medium">
-          <a href="/" className="nav-item">{capitalizeFirst(navbar.home)}</a>
+          <a href="/" className="nav-item">{capitalizeFirst('home')}</a>
 
           <div className="relative" ref={menuRef}>
             <button
@@ -42,7 +42,7 @@ export const Header = () => {
               className="flex items-center gap-2 nav-item"
             >
               <FaBriefcase className="text-base" />
-              {capitalizeFirst(navbar.menu)}
+              {capitalizeFirst('services')}
               <FaCaretDown />
             </button>
 
@@ -61,7 +61,11 @@ export const Header = () => {
                       className="block px-4 py-2 text-sm hover:text-cyan-400 transition"
                       onClick={() => setMenuOpen(false)}
                     >
-                      {capitalizeFirst(path.replace('appde', 'App Development').replace('soft', 'Software Development'))}
+                      {capitalizeFirst(
+                        path
+                          .replace('appde', 'App Development')
+                          .replace('soft', 'Software Development')
+                      )}
                     </a>
                   ))}
                 </motion.div>
@@ -90,7 +94,7 @@ export const Header = () => {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden bg-black/80 backdrop-blur-md border-t border-cyan-400/20 text-cyan-200 px-6 py-5 space-y-3"
           >
-            {[navbar.home, 'AI', 'Web Development', 'App Development', 'Software Development'].map((item, idx) => (
+            {['home', 'AI', 'Web Development', 'App Development', 'Software Development'].map((item, idx) => (
               <a
                 key={idx}
                 href={`/${item.toLowerCase().replace(' ', '').replace('development', '')}`}
