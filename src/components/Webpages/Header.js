@@ -6,6 +6,7 @@ import Logo from '../../assests/Poeage_Logo_10.png'
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
 
   const capitalizeFirst = (str) =>
@@ -17,71 +18,154 @@ export const Header = () => {
         setMenuOpen(false);
       }
     };
+    
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      setScrolled(isScrolled);
+    };
+    
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <header className="fixed z-30 w-full backdrop-blur-md bg-gradient-to-r from-cyan-500 via-black to-blue-600 shadow-lg">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 h-12 md:h-16">
-        <a href="/" className="flex items-center gap-2">
+    <motion.header 
+      className="fixed z-30 w-full backdrop-blur-md bg-gradient-to-r from-cyan-500 via-black to-blue-600 shadow-lg"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", damping: 15, stiffness: 100 }}
+    >
+      <div className={`max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 transition-all duration-300 ${scrolled ? 'h-12' : 'h-16'}`}>
+        <motion.a 
+          href="/" 
+          className="flex items-center gap-2"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <motion.img
-            src={Logo} // Replace with your actual logo path
+            src={Logo}
             alt="Logo"
             className="w-40 drop-shadow-md"
+            whileHover={{ rotate: [0, -5, 0] }}
+            transition={{ duration: 0.5 }}
           />
-        </a>
+        </motion.a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-10 text-white font-medium">
-          <a href="/" className="nav-item">{capitalizeFirst('home')}</a>
+          <motion.a 
+            href="/" 
+            className="nav-item"
+            whileHover={{ y: -2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            {capitalizeFirst('home')}
+          </motion.a>
 
           <div className="relative" ref={menuRef}>
-            <button
+            <motion.button
               onClick={() => setMenuOpen((prev) => !prev)}
               className="flex items-center gap-2 nav-item"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <FaBriefcase className="text-base" />
+              <motion.div
+                animate={{ rotate: menuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaBriefcase className="text-base" />
+              </motion.div>
               {capitalizeFirst('services')}
-              <FaCaretDown />
-            </button>
+              <motion.div
+                animate={{ rotate: menuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaCaretDown />
+              </motion.div>
+            </motion.button>
 
             <AnimatePresence>
               {menuOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full left-0 mt-3 bg-black/80 backdrop-blur-lg border border-cyan-300/30 shadow-xl rounded-md py-2 w-56 z-20"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  className="absolute top-full left-0 mt-3 bg-black/90 backdrop-blur-lg border border-cyan-300/30 shadow-xl rounded-md py-2 w-56 z-20"
                 >
-                  {['ai', 'web', 'appde', 'soft'].map((path) => (
-                    <a
+                  {['ai', 'web', 'appde', 'soft'].map((path, index) => (
+                    <motion.a
                       key={path}
                       href={`/${path}`}
                       className="block px-4 py-2 text-sm hover:text-cyan-400 transition"
                       onClick={() => setMenuOpen(false)}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ 
+                        x: 5,
+                        transition: { duration: 0.2 }
+                      }}
                     >
                       {capitalizeFirst(
                         path
                           .replace('appde', 'App Development')
                           .replace('soft', 'Software Development')
                       )}
-                    </a>
+                    </motion.a>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
+          
+          <motion.a 
+            href="/quotes" 
+            className="px-4 py-2 text-sm font-bold bg-cyan-400 text-black rounded-full shadow hover:bg-white transition"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 15px rgba(34, 211, 238, 0.5)"
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get a Quote
+          </motion.a>
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <button
+          <motion.button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="text-2xl text-cyan-200 focus:outline-none"
+            className="text-2xl text-cyan-200 focus:outline-none p-1 rounded-full bg-black/20"
+            whileHover={{ scale: 1.1, backgroundColor: "rgba(0,0,0,0.3)" }}
+            whileTap={{ scale: 0.9 }}
           >
-            {mobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+            <AnimatePresence mode="wait">
+              {mobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                >
+                  <FaTimes />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                >
+                  <FaBars />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </div>
 
@@ -89,29 +173,47 @@ export const Header = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-black/80 backdrop-blur-md border-t border-cyan-400/20 text-cyan-200 px-6 py-5 space-y-3"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-black/95 backdrop-blur-md border-t border-cyan-400/20 text-cyan-200 overflow-hidden"
           >
-            {['home', 'AI', 'Web Development', 'App Development', 'Software Development'].map((item, idx) => (
-              <a
-                key={idx}
-                href={`/${item.toLowerCase().replace(' ', '').replace('development', '')}`}
-                className="block py-2 hover:text-cyan-400 transition"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {capitalizeFirst(item)}
-              </a>
-            ))}
-
-            <a
-              href="/quotes"
-              className="block mt-4 text-center text-sm font-bold bg-cyan-400 text-black py-2 rounded-full shadow hover:bg-white transition"
-              onClick={() => setMobileMenuOpen(false)}
+            <motion.div 
+              className="px-6 py-5 space-y-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
             >
-              Get a Quote
-            </a>
+              {['home', 'AI', 'Web Development', 'App Development', 'Software Development'].map((item, idx) => (
+                <motion.a
+                  key={idx}
+                  href={`/${item.toLowerCase().replace(' ', '').replace('development', '')}`}
+                  className="block py-2 hover:text-cyan-400 transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 + idx * 0.1 }}
+                  whileHover={{ x: 5 }}
+                >
+                  {capitalizeFirst(item)}
+                </motion.a>
+              ))}
+
+              <motion.a
+                href="/quotes"
+                className="block mt-4 text-center text-sm font-bold bg-cyan-400 text-black py-2 rounded-full shadow hover:bg-white transition"
+                onClick={() => setMobileMenuOpen(false)}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.8 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 15px rgba(34, 211, 238, 0.5)"
+                }}
+              >
+                Get a Quote
+              </motion.a>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -129,13 +231,13 @@ export const Header = () => {
           left: 0;
           width: 0%;
           height: 2px;
-          background: cyan;
+          background: linear-gradient(90deg, cyan, transparent);
           transition: width 0.3s ease;
         }
         .nav-item:hover::after {
           width: 100%;
         }
       `}</style>
-    </header>
+    </motion.header>
   );
 };

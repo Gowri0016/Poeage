@@ -27,58 +27,115 @@ export default function Soft() {
     { icon: <FaChartLine />, title: "Analytics & Performance Monitoring", desc: "Track user behavior & optimize app performance continuously." },
   ];
 
+  // Animation variants for staggered animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden bg-transparent min-h-screen">
-     
-        <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+      <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-20">
+          <div className="absolute top-10% left-5% w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow"></div>
+          <div className="absolute top-20% right-10% w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow animation-delay-2000"></div>
+          <div className="absolute bottom-10% left-15% w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse-slow animation-delay-4000"></div>
+        </div>
+        
+        <div className="relative z-10 py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-light text-center text-black mb-8"
+            transition={{ duration: 0.7 }}
+            className="text-center mb-16"
           >
-            Advanced App Development Services
-          </motion.h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-6">
+              Advanced App Development
+            </h1>
+            <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-700">
+              Transform your business ideas into innovative, high-quality mobile applications built for performance and growth.
+            </p>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center text-gray-600 text-lg md:text-xl mb-16"
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
           >
-            Transform your business ideas into innovative, high-quality mobile applications built for performance and growth.
-          </motion.p>
-
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30, rotateX: -10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.7 }}
-                className="group bg-gradient-to-br from-white to-white backdrop-blur-md border border-cyan-900 rounded-3xl shadow-2xl p-8 hover:scale-105 hover:rotate-[2deg] transition-transform duration-500 hover:border-indigo-400 hover:shadow-indigo-500/30"
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
               >
-                <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full  text-blue-500 border-4 border-blue-500 text-3xl shadow-lg mb-6 group-hover:scale-110 transition">
-                  {feature.icon}
+                {/* Card accent element */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                
+                <div className="p-6">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-600 text-xl mb-5 transform group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    {feature.desc}
+                  </p>
+                  <button
+                    onClick={() => navigate('/quotes')}
+                    className="px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform group-hover:scale-105"
+                  >
+                    Get Quote
+                  </button>
                 </div>
-                <h3 className="text-lg font-semibold text-center text-black mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-center text-gray-600 mb-5">
-                  {feature.desc}
-                </p>
-                <button
-                  onClick={() => navigate('/quotes')}
-                  className="block mx-auto px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-500 hover:from-blue-500 hover:to-sky-500"
-                >
-                  Get Quote
-                </button>
+                
+                {/* Hover effect background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+
+          {/* Call to action section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            className="mt-20 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-10 shadow-xl"
+          >
+            <h2 className="text-3xl font-bold text-white mb-5">Ready to Build Your Next App?</h2>
+            <p className="text-blue-100 max-w-2xl mx-auto mb-8">
+              Let's discuss your project and create a custom solution that meets your business needs and exceeds expectations.
+            </p>
+            <button
+              onClick={() => navigate('/contact')}
+              className="px-8 py-3.5 font-medium text-blue-600 bg-white rounded-lg hover:bg-gray-100 transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              Start Your Project
+            </button>
+          </motion.div>
         </div>
       </div>
       <Footer />

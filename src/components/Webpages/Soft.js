@@ -26,62 +26,163 @@ export default function Soft() {
     { icon: <FaRocket />, title: "Startup Tech Accelerators", desc: "Launch your startup faster with MVPs & growth-ready tech stacks." },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0, rotateY: -15 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      rotateY: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden bg-transparent min-h-screen">
-      
-        <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <motion.h1
+      <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
+        {/* 3D Background Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-10% left-5% w-80 h-80 bg-cyan-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            <div className="absolute bottom-10% right-5% w-96 h-96 bg-purple-500 rounded-full filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+            <div className="absolute top-50% left-50% transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse animation-delay-4000"></div>
+          </div>
+        </div>
+
+        {/* Floating 3D shapes */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            initial={{ y: -100, rotate: 0 }}
+            animate={{ y: 40, rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 left-10% w-20 h-20 border-4 border-cyan-400 border-opacity-30 rounded-lg"
+          ></motion.div>
+          <motion.div 
+            initial={{ y: -150, rotate: 45 }}
+            animate={{ y: 80, rotate: 405 }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 right-15% w-16 h-16 border-4 border-purple-400 border-opacity-30 rounded-full"
+          ></motion.div>
+          <motion.div 
+            initial={{ y: -200, rotate: -45 }}
+            animate={{ y: 100, rotate: 315 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute top-0 left-30% w-12 h-12 border-4 border-blue-400 border-opacity-30 rotate-45"
+          ></motion.div>
+        </div>
+
+        <div className="relative z-10 py-16 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
+          <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-light text-center text-black bg-clip-text  mb-8"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            3D-inspired Software Solutions
-          </motion.h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-6">
+              3D-Inspired Software Solutions
+            </h1>
+            <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300">
+              Experience futuristic, immersive software solutions designed to accelerate innovation and elevate your digital presence.
+            </p>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center text-gray-600 text-lg md:text-xl mb-16"
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
           >
-            Experience futuristic, immersive software solutions designed to accelerate innovation and elevate your digital presence.
-          </motion.p>
-
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30, rotateX: -10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.7 }}
-                className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-cyan-500/40 rounded-3xl shadow-2xl p-8 hover:scale-105 hover:rotate-[2deg] transition-transform duration-500 hover:border-cyan-400 hover:shadow-cyan-500/30"
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -15,
+                  rotateY: 5,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative bg-gray-800 bg-opacity-40 rounded-2xl overflow-hidden p-8 border border-cyan-500 border-opacity-20 hover:border-cyan-400 hover:border-opacity-50 transition-all duration-500 shadow-lg hover:shadow-2xl"
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
               >
-                <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full text-blue-500 border-4 border-blue-500 text-3xl shadow-lg mb-6 group-hover:scale-110 transition">
-                  {feature.icon}
+                {/* 3D effect edge highlights */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-80"></div>
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-purple-500 opacity-50"></div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-500 opacity-30"></div>
+                <div className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-purple-500 opacity-50"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-2xl shadow-lg mb-6 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-center text-white mb-4">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300 text-center mb-6">
+                    {feature.desc}
+                  </p>
+                  <button
+                    onClick={() => navigate('/quotes')}
+                    className="block mx-auto px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform group-hover:scale-105 shadow-md hover:shadow-lg"
+                  >
+                    Get Quote
+                  </button>
                 </div>
-                <h3 className="text-lg font-bold text-center text-black mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-center text-gray-600 mb-5">
-                  {feature.desc}
-                </p>
-                <button
-                  onClick={() => navigate('/quotes')}
-                  className="block mx-auto px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-500 hover:from-blue-500 hover:to-sky-500"
-                >
-                  Get Quote
-                </button>
+                
+                {/* Hover effect background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-900 to-blue-900 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10"></div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+
+          {/* 3D Call to Action Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            className="mt-20 text-center bg-gray-800 bg-opacity-40 rounded-2xl p-10 border border-cyan-500 border-opacity-30 shadow-xl relative overflow-hidden"
+            style={{ 
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            {/* 3D effect for CTA */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl opacity-30 blur-lg"></div>
+            <div className="absolute inset-0 rounded-2xl border border-cyan-400 border-opacity-20"></div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-5">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                Let's create cutting-edge software solutions that propel your business into the future with our 3D-inspired development approach.
+              </p>
+              <button
+                onClick={() => navigate('/contact')}
+                className="px-8 py-3.5 font-medium text-white bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg hover:from-cyan-600 hover:to-purple-700 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+              >
+                Start Your Project
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
       <Footer />
     </>
   );
 }
- 

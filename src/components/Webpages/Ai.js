@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from './Header';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
@@ -10,6 +10,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Soft() {
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    return () => setIsVisible(false);
+  }, []);
 
   const features = [
     { icon: <FaBrain />, title: "AI Model Development", desc: "Custom machine learning models tailored to your business challenges." },
@@ -29,57 +35,159 @@ export default function Soft() {
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden bg-transparent min-h-screen">
-     
+      <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden -z-10">
+          {[...Array(10)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-blue-200 opacity-20"
+              style={{
+                width: Math.random() * 200 + 100,
+                height: Math.random() * 200 + 100,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, Math.random() * 40 - 20, 0],
+                x: [0, Math.random() * 40 - 20, 0],
+                scale: [1, 1 + Math.random() * 0.3, 1],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
 
         <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-light text-center text-black mb-8"
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
           >
-            Futuristic AI Development Services
-          </motion.h1>
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              Futuristic{' '}
+              <span className="relative">
+                <motion.span 
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600"
+                  animate={{ 
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] 
+                  }}
+                  transition={{ 
+                    duration: 5, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  style={{ 
+                    backgroundSize: '200% 100%' 
+                  }}
+                >
+                  AI Development
+                </motion.span>{' '}
+                Services
+              </span>
+            </motion.h1>
+            
+            <motion.div
+              className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6"
+              initial={{ width: 0 }}
+              animate={isVisible ? { width: 96 } : {}}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            />
+            
+            <motion.p
+              className="max-w-3xl mx-auto text-gray-700 text-lg md:text-xl"
+              initial={{ opacity: 0 }}
+              animate={isVisible ? { opacity: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.6 }}
+            >
+              Unlock the potential of artificial intelligence with cutting-edge solutions designed to propel your business into the future.
+            </motion.p>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center text-gray-600 text-lg md:text-xl mb-16"
-          >
-            Unlock the potential of artificial intelligence with cutting-edge solutions designed to propel your business into the future.
-          </motion.p>
-
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30, rotateX: -10 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.7 }}
-                className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-cyan-900/40 rounded-3xl shadow-2xl p-8 hover:scale-105 hover:rotate-[2deg] transition-transform duration-500 hover:border-indigo-400 hover:shadow-indigo-500/30"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative bg-white backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-gray-100 overflow-hidden"
               >
-                <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-full border-4 border-blue-500 text-blue-600 text-3xl shadow-lg mb-6 group-hover:scale-110 transition">
+                {/* Gradient accent */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                
+                {/* Hover effect background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                
+                <motion.div 
+                  className="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 text-white text-2xl shadow-lg mb-6"
+                  whileHover={{ 
+                    scale: 1.1,
+                    rotate: 5,
+                    transition: { duration: 0.2 }
+                  }}
+                >
                   {feature.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-center text-black mb-3">
+                </motion.div>
+                
+                <h3 className="text-lg font-semibold text-center text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-center text-gray-600 mb-5">
+                
+                <p className="text-sm text-center text-gray-600 mb-6">
                   {feature.desc}
                 </p>
-                    <button
-                                  onClick={() => navigate('/quotes')}
-                                  className="block mx-auto px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-500 hover:from-blue-500 hover:to-sky-500"
-                                >
-                                  Get Quote
-                                </button>
-                              
+                
+                <motion.button
+                  onClick={() => navigate('/quotes')}
+                  className="block mx-auto px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-500 shadow-md hover:from-cyan-600 hover:to-blue-600 transition-all group-hover:shadow-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Quote
+                </motion.button>
+                
+                {/* Subtle glow effect on hover */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-cyan-200 group-hover:opacity-50 transition-all duration-300 -z-10"></div>
               </motion.div>
             ))}
           </div>
+
+          {/* Call to Action Section */}
+          <motion.div 
+            className="mt-20 text-center bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-10 text-white shadow-xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.8 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Business with AI?</h2>
+            <p className="max-w-2xl mx-auto mb-6 opacity-90">
+              Let's discuss how our AI solutions can drive innovation and efficiency for your organization.
+            </p>
+            <motion.button
+              onClick={() => navigate('/quotes')}
+              className="px-8 py-3 rounded-full font-semibold text-cyan-900 bg-white hover:bg-gray-100 transition-colors shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Start Your AI Journey
+            </motion.button>
+          </motion.div>
         </div>
       </div>
       <Footer />
