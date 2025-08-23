@@ -15,8 +15,7 @@ import {
   Palette,
   Rocket,
   Globe,
-  Users,
-  ShieldCheck
+  Sparkles
 } from "lucide-react";
 
 const Footer = () => {
@@ -45,33 +44,41 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black text-white pt-24 pb-12 overflow-hidden">
-      {/* Background Glow */}
+    <footer className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white pt-28 pb-16 overflow-hidden">
+      {/* Animated Background Orbs */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 w-[80%] h-[80%] bg-cyan-700/10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-purple-600/10 blur-2xl rounded-full"></div>
+        <motion.div
+          className="absolute top-10 left-10 w-64 h-64 bg-cyan-700/20 blur-3xl rounded-full"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-10 w-72 h-72 bg-purple-600/20 blur-3xl rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 space-y-20">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10 space-y-24">
         {/* Call to Action */}
         <motion.section
-          className="max-w-5xl mx-auto text-center bg-gradient-to-br from-cyan-900/30 via-black/40 to-blue-900/30 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-cyan-500/20"
-          initial={{ opacity: 0, y: 50 }}
+          className="max-w-5xl mx-auto text-center bg-gradient-to-br from-cyan-900/30 via-black/40 to-purple-900/30 backdrop-blur-xl rounded-[2rem] p-12 shadow-2xl border border-cyan-500/20"
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 mb-6">
-            Powering Ideas into Innovation
+          <motion.h2 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 mb-6 tracking-tight">
+            Transforming Vision into Reality
           </motion.h2>
-          <p className="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-            Poeage Technology brings together creativity, strategy, and technology to create impactful digital solutions.
+          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            Poeage Technology blends innovation, design, and intelligence to craft futuristic solutions that empower businesses globally.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all hover:scale-105 hover:shadow-cyan-500/30"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all hover:scale-110 hover:shadow-purple-500/30"
           >
-            Let's Collaborate
+            <Sparkles className="w-5 h-5" /> Let's Build Together
           </a>
         </motion.section>
 
@@ -79,12 +86,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Intro */}
           <div className="text-center lg:text-left">
-            <img src={logo} alt="Poeage Logo" className="w-36 mb-4 mx-auto lg:mx-0" />
+            <img src={logo} alt="Poeage Logo" className="w-36 mb-4 mx-auto lg:mx-0 drop-shadow-lg" />
             <h3 className="text-xl font-bold mb-2">Poeage Technology</h3>
-            <p className="text-gray-400 mb-6 text-sm">
-              Building smarter solutions with passion and innovation to empower businesses worldwide.
+            <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+              Innovating with passion to design powerful digital ecosystems that shape the future.
             </p>
-          
           </div>
 
           {/* Services */}
@@ -102,9 +108,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Navigation */}
+          {/* Social Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-cyan-400">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-cyan-400">Connect With Us</h4>
             <div className="flex justify-center lg:justify-start space-x-4">
               {socialLinks.map(({ Icon, href, color }, idx) => (
                 <a
@@ -112,9 +118,9 @@ const Footer = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white transition-all ${color} hover:bg-cyan-900 hover:scale-110`}
+                  className={`w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center text-white transition-all ${color} hover:bg-cyan-900 hover:scale-110 shadow-lg`}
                 >
-                  <Icon size={18} />
+                  <Icon size={20} />
                 </a>
               ))}
             </div>
@@ -130,10 +136,12 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <PhoneIcon className="w-4 h-4 text-cyan-500" />
-                <a href="tel:7358039616" className="hover:text-cyan-400 transition">+91 805-688-9616</a>
+                <a href="tel:8056889616" className="hover:text-cyan-400 transition">+91 805-688-9616</a>
               </li>
-             <h3>Have a mind projects ?</h3>
-             <a href="/quotes">Getquotes</a>
+              <li className="pt-4">
+                <p className="font-semibold text-gray-200">Have a project in mind?</p>
+                <a href="/quotes" className="text-cyan-400 hover:underline">Get a Quote →</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -152,9 +160,9 @@ const Footer = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.6 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-8 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 p-3 rounded-full shadow-lg hover:scale-110 transition z-50"
+            className="fixed bottom-8 right-8 bg-gradient-to-r from-cyan-500 to-purple-600 p-4 rounded-2xl shadow-lg hover:scale-125 transition z-50"
           >
-            <ArrowUp className="w-5 h-5 text-white" />
+            <ArrowUp className="w-6 h-6 text-white" />
           </motion.button>
         )}
       </AnimatePresence>
