@@ -83,13 +83,21 @@ const Footer = () => {
         </motion.section>
 
         {/* Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Logo & Intro */}
           <div className="text-center lg:text-left">
             <img src={logo} alt="Poeage Logo" className="w-36 mb-4 mx-auto lg:mx-0 drop-shadow-lg" />
             <h3 className="text-xl font-bold mb-2">Poeage Technology</h3>
             <p className="text-gray-400 mb-6 text-sm leading-relaxed">
               Innovating with passion to design powerful digital ecosystems that shape the future.
+            </p>
+          </div>
+
+          {/* About Us */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4 text-cyan-400">About Us</h4>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Founded on <span className="text-cyan-300 font-medium">October 31, 2023</span>, Poeage Technology has been committed to bridging creativity and intelligence to deliver cutting-edge solutions for a global audience.
             </p>
           </div>
 
