@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import Logo from '../../assests/Poeage_Logo_10.png'
+
 export const DContext = createContext();
 
 function Datacontext(props) {
@@ -42,81 +43,7 @@ function Datacontext(props) {
     },
   ];
 
-  const portfolio = [
-    {
-      pricingplane: [],
-    },
-  ];
-
-  const client = [
-    {
-      image: "jvhdbs",
-      number: "jsvuhbshj",
-      content: "nbdsvhjbs",
-      para: "bvhbvjdbvnn",
-    },
-    {
-      image: "jvhdbs",
-      number: "jsvuhbshj",
-      content: "nbdsvhjbs",
-      para: "bvhbvjdbvnn",
-    },
-    {
-      image: "jvhdbs",
-      number: "jsvuhbshj",
-      content: "nbdsvhjbs",
-      para: "bvhbvjdbvnn",
-    },
-  ];
-
-  const Team = [
-    {
-      image: "image",
-      name: "name",
-      postion: "postion",
-      socialmedia: {
-        twitter: "twitter",
-        facebook: "facebook",
-        linkecin: "linkedin",
-        instagram: "instagram",
-      },
-    },
-    {
-      image: "image",
-      name: "name",
-      postion: "postion",
-      socialmedia: {
-        twitter: "twitter",
-        facebook: "facebook",
-        linkecin: "linkedin",
-        instagram: "instagram",
-      },
-    },
-    {
-      image: "image",
-      name: "name",
-      postion: "postion",
-      socialmedia: {
-        twitter: "twitter",
-        facebook: "facebook",
-        linkecin: "linkedin",
-        instagram: "instagram",
-      },
-    },
-    {
-      image: "image",
-      name: "name",
-      postion: "postion",
-      socialmedia: {
-        twitter: "twitter",
-        facebook: "facebook",
-        linkecin: "linkedin",
-        instagram: "instagram",
-      },
-    },
-  ];
-
-  const data = { navbar, service, portfolio, client, Team };
+  const data = { navbar, service };
 
   return <DContext.Provider value={data}>{props.children}</DContext.Provider>;
 }

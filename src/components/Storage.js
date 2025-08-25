@@ -9,6 +9,7 @@ import Ai from './Webpages/Ai';
 import Web from './Webpages/Web';
 import Appde from './Webpages/Appde';
 import Soft from './Webpages/Soft';
+import { Group } from 'lucide-react';
 
 
 
@@ -25,6 +26,7 @@ export const Storage = () => {
         <Route path='/web' element={<Web />} ></Route>
         <Route path='/appde' element={<Appde />} ></Route>
         <Route path='/soft' element={<Soft />} ></Route>
+        <Route path='/groups' element={<Group />} ></Route>
     </Routes>
     </>
   )

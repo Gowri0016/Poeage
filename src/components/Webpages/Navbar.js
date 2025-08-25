@@ -5,6 +5,7 @@ import { Home } from './Home';
 import { Services } from './Services';
 import Getquotes from './Getquotes';
 import Footer from './Footer';
+import Groups from './Groups';
 
 export const Navbar = () => {
   return (
@@ -29,6 +30,10 @@ export const Navbar = () => {
 
         <div className="w-full">
           <Getquotes />
+        </div>
+
+        <div className="w-full -mt-28">
+          <Groups />
         </div>
 
         <div className="w-full">
