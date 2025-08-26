@@ -25,7 +25,7 @@ export default function Groups() {
       title: 'Poeage Hub',
       desc: 'A central hub fostering collaboration, creativity, and innovation across industries.',
       img: hubImage,
-      link: 'https://poeagehub.vercel.app/',
+      link: 'https://poeage-hub.vercel.app/',
       theme: 'from-pink-400 to-rose-500'
     },
     {
