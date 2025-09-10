@@ -53,96 +53,72 @@ export const Home = () => {
 
   const features = [
     {
-      icon: <Target className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Target className="w-8 h-8" />,
       title: "Goal-Oriented",
       description: "Focused on delivering solutions that meet your specific business objectives"
     },
     {
-      icon: <Code className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Code className="w-8 h-8" />,
       title: "Cutting-Edge Tech",
       description: "Utilizing the latest technologies to build fast, scalable applications"
     },
     {
-      icon: <Palette className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Palette className="w-8 h-8" />,
       title: "Beautiful Design",
       description: "Creating interfaces that are both visually stunning and highly functional"
     },
     {
-      icon: <Users className="w-6 h-6 md:w-8 md:h-8" />,
+      icon: <Users className="w-8 h-8" />,
       title: "User-Centered",
       description: "Designing with your audience in mind to ensure maximum engagement"
     }
   ];
 
   return (
-    <div className="min-h-screen mt-5 bg-gradient-to-br from-blue-50 to-cyan-50 text-black flex flex-col items-center justify-center px-4 md:px-6 py-12 md:py-16">
-      {/* Main content */}
-      <div className="w-full max-w-4xl mx-auto">
+    <div className="relative min-h-screen overflow-hidden  bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 text-black flex flex-col items-center justify-center px-4 md:px-6 py-12 md:py-16">
+
+      <div className="w-full max-w-5xl mx-auto  mt-5 relative z-10">
         {/* Intro Section */}
         <motion.div
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="flex justify-center mb-4 md:mb-6"
-            animate={{ 
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{ duration: 6, repeat: Infinity }}
+            className="flex justify-center mb-6"
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
           >
-            <Sparkles className="w-10 h-10 md:w-12 md:h-12 text-cyan-500" />
+            <Sparkles className="w-12 h-12 text-cyan-500 drop-shadow-lg" />
           </motion.div>
-          
+
           <motion.h1
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+            className="text-4xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Let's Build Something{' '}
-            <span className="relative">
-              <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600"
-                animate={{ 
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] 
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                style={{ 
-                  backgroundSize: '200% 100%' 
-                }}
-              >
-                Amazing
-              </motion.span>
-              <motion.div 
-                className="absolute -bottom-1 md:-bottom-2 left-0 h-1 w-full bg-gradient-to-r from-cyan-500 to-blue-600"
-                initial={{ scaleX: 0 }}
-                animate={isVisible ? { scaleX: 1 } : {}}
-                transition={{ duration: 1, delay: 0.8 }}
-              />
-            </span>{' '}
-            Together
+            Let’s Build Something <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 animate-gradient bg-[length:200%_200%] inline-block">
+              Amazing Together
+            </span>
           </motion.h1>
-          
+
           <motion.p
-            className="mt-4 md:mt-6 text-base md:text-lg text-gray-700 leading-relaxed"
+            className="mt-4 md:mt-6 text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Welcome to <span className="font-semibold text-blue-600">Poeage Technology</span> — 
+            Welcome to <span className="font-semibold text-blue-600">Poeage Technology</span> —
             your partner in creating exceptional digital experiences that drive results.
           </motion.p>
         </motion.div>
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.7 }}
@@ -150,52 +126,48 @@ export const Home = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-              whileHover={{ y: -3, scale: 1.01 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              className="group bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-500"
             >
               <motion.div 
-                className="text-blue-500 mb-3 md:mb-4"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.2 }}
+                className="mb-4 p-3 w-fit rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white shadow-md"
+                whileHover={{ scale: 1.15, rotate: 8 }}
+                transition={{ duration: 0.3 }}
               >
                 {feature.icon}
               </motion.div>
-              <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1 md:mb-2">{feature.title}</h3>
-              <p className="text-xs md:text-sm text-gray-600">{feature.description}</p>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+              <p className="text-sm md:text-base text-gray-600">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Why Me Section */}
+        {/* Why Us Section */}
         <motion.div
-          className="text-center max-w-2xl mx-auto mb-8 md:mb-12 bg-white/80 backdrop-blur-md p-6 md:p-8 rounded-xl md:rounded-2xl shadow-lg"
+          className="text-center max-w-3xl mx-auto mb-12 bg-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-lg border border-gray-100"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <motion.div 
-            className="inline-block p-2 md:p-3 bg-blue-100 rounded-full mb-3 md:mb-4"
+          <motion.div
+            className="inline-block p-4 bg-blue-100 rounded-full mb-4"
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           >
-            <Zap className="w-6 h-6 md:w-8 md:h-8 text-blue-600" />
+            <Zap className="w-8 h-8 text-blue-600" />
           </motion.div>
-          
-          <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 md:mb-4">
+
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
             What Sets Us Apart
           </h2>
-          <p className="text-sm md:text-base text-gray-700">
-            Every client has a unique vision. We specialize in transforming your ideas into 
+          <p className="text-base md:text-lg text-gray-700">
+            Every client has a unique vision. We specialize in transforming your ideas into
             powerful digital solutions through innovative design, clean development, and ongoing support.
           </p>
         </motion.div>
 
         {/* CTA Buttons */}
-        <motion.div 
-          className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-8 md:mb-12"
+        <motion.div
+          className="flex flex-col md:flex-row justify-center gap-6 mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1.5 }}
@@ -203,15 +175,14 @@ export const Home = () => {
           {/* Quote Button */}
           <motion.button
             onClick={() => navigate('/quotes')}
-            className="relative px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg group overflow-hidden shadow-lg flex items-center justify-center"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.3 }}
+            className="relative px-8 py-4 rounded-full font-bold text-lg group overflow-hidden shadow-lg"
+            whileHover={{ scale: 1.05, y: -3 }}
+            whileTap={{ scale: 0.97 }}
           >
             <span className="relative z-10 text-white">Get a Quote</span>
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600" />
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <ArrowRightCircle className="relative z-10 ml-2 w-5 h-5 md:w-6 md:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRightCircle className="relative z-10 ml-2 w-6 h-6 text-white inline-block group-hover:translate-x-1 transition-transform duration-300" />
           </motion.button>
 
           {/* Projects Button */}
@@ -219,21 +190,20 @@ export const Home = () => {
             href="https://poeage-portfolio.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg group overflow-hidden shadow-lg flex items-center justify-center"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ duration: 0.3 }}
+            className="relative px-8 py-4 rounded-full font-bold text-lg group overflow-hidden shadow-lg"
+            whileHover={{ scale: 1.05, y: -3 }}
+            whileTap={{ scale: 0.97 }}
           >
             <span className="relative z-10 text-white">View Our Work</span>
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-600" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <ArrowRightCircle className="relative z-10 ml-2 w-5 h-5 md:w-6 md:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRightCircle className="relative z-10 ml-2 w-6 h-6 text-white inline-block group-hover:translate-x-1 transition-transform duration-300" />
           </motion.a>
         </motion.div>
 
         {/* Social Links */}
-        <motion.div 
-          className="flex justify-center gap-4 md:gap-6 mt-4"
+        <motion.div
+          className="flex justify-center gap-6"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 1.8 }}
@@ -244,12 +214,12 @@ export const Home = () => {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center bg-white text-gray-700 shadow-lg transition-all duration-300 ${color} border border-gray-200`}
+              className={`w-12 h-12 rounded-full flex items-center justify-center bg-white/80 backdrop-blur-md text-gray-700 shadow-md border border-gray-200 transition-all duration-300 ${color}`}
               title={platform}
-              whileHover={{ y: -3, scale: 1.05 }}
+              whileHover={{ y: -3, scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Icon className="w-4 h-4 md:w-5 md:h-5" />
+              <Icon className="w-5 h-5" />
             </motion.a>
           ))}
         </motion.div>
