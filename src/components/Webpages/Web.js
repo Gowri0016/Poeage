@@ -29,27 +29,22 @@ export default function Soft() {
   return (
     <>
       <Header />
-      <div className="relative overflow-hidden bg-transparent min-h-screen">
-    
-        <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-light text-center text-black mb-8"
-          >
+           {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-center py-24 px-6 sm:px-12 lg:px-24 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-b-3xl shadow-lg"
+        >
+          <FaLaptopCode className="w-20 h-20 mx-auto mb-4" />
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
             Professional Web Development Services
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center text-gray-600 text-lg md:text-xl mb-16"
-          >
-            Build fast, secure, and high-performing websites that captivate users and drive results for your business.
-          </motion.p>
-
+          </h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto">
+            Build fast, secure, and high-performing websites that captivate users and drive business results with cutting-edge web solutions.
+          </p>
+        
+</motion.div>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
@@ -78,8 +73,6 @@ export default function Soft() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </div>
       <Footer />
     </>
   );

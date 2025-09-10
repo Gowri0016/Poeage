@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaCaretDown, FaBars, FaTimes, FaBriefcase } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../../assests/Poeage_Logo_10.png'
+import Logo from '../../assests/Poeage_Logo_10.png';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,15 +18,15 @@ export const Header = () => {
         setMenuOpen(false);
       }
     };
-    
+
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       setScrolled(isScrolled);
     };
-    
+
     document.addEventListener('mousedown', handleClickOutside);
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
@@ -34,15 +34,19 @@ export const Header = () => {
   }, []);
 
   return (
-    <motion.header 
-      className="fixed z-30 w-full backdrop-blur-md bg-gradient-to-r from-cyan-500 via-black to-blue-600 shadow-lg"
+    <motion.header
+      className="fixed z-30 w-full backdrop-blur-md bg-gradient-to-r from-blue-500 to-cyan-400 shadow-lg"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: "spring", damping: 15, stiffness: 100 }}
+      transition={{ type: 'spring', damping: 15, stiffness: 100 }}
     >
-      <div className={`max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 transition-all duration-300 ${scrolled ? 'h-12' : 'h-16'}`}>
-        <motion.a 
-          href="/" 
+      <div
+        className={`max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-8 transition-all duration-300 ${
+          scrolled ? 'h-12' : 'h-16'
+        }`}
+      >
+        <motion.a
+          href="/"
           className="flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -56,13 +60,13 @@ export const Header = () => {
           />
         </motion.a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-10 text-white font-medium">
-          <motion.a 
-            href="/" 
+        {/* Desktop Nav (md and up) */}
+        <nav className="hidden md:flex items-center space-x-8 text-white font-medium">
+          <motion.a
+            href="/"
             className="nav-item"
             whileHover={{ y: -2 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             {capitalizeFirst('home')}
           </motion.a>
@@ -97,38 +101,36 @@ export const Header = () => {
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   className="absolute top-full left-0 mt-3 bg-black/90 backdrop-blur-lg border border-cyan-300/30 shadow-xl rounded-md py-2 w-56 z-20"
                 >
-                  {['ai', 'web', 'appde', 'soft'].map((path, index) => (
+                  {[
+                    { label: 'AI Development', path: '/ai' },
+                    { label: 'Web Development', path: '/web' },
+                    { label: 'App Development', path: '/appde' },
+                    { label: 'Software Development', path: '/soft' },
+                  ].map((item, index) => (
                     <motion.a
-                      key={path}
-                      href={`/${path}`}
+                      key={item.path}
+                      href={item.path}
                       className="block px-4 py-2 text-sm hover:text-cyan-400 transition"
                       onClick={() => setMenuOpen(false)}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      whileHover={{ 
-                        x: 5,
-                        transition: { duration: 0.2 }
-                      }}
+                      whileHover={{ x: 5, transition: { duration: 0.2 } }}
                     >
-                      {capitalizeFirst(
-                        path
-                          .replace('appde', 'App Development')
-                          .replace('soft', 'Software Development')
-                      )}
+                      {item.label}
                     </motion.a>
                   ))}
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-          
-          <motion.a 
-            href="/quotes" 
-            className="px-4 py-2 text-sm font-bold bg-cyan-400 text-black rounded-full shadow hover:bg-white transition"
-            whileHover={{ 
+
+          <motion.a
+            href="/quotes"
+            className="px-4 py-2 text-sm font-bold bg-none text-black rounded-full shadow hover:bg-white transition"
+            whileHover={{
               scale: 1.05,
-              boxShadow: "0 0 15px rgba(34, 211, 238, 0.5)"
+              boxShadow: '0 0 15px rgba(34, 211, 238, 0.5)',
             }}
             whileTap={{ scale: 0.95 }}
           >
@@ -136,12 +138,12 @@ export const Header = () => {
           </motion.a>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button (below md) */}
         <div className="md:hidden">
           <motion.button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             className="text-2xl text-cyan-200 focus:outline-none p-1 rounded-full bg-black/20"
-            whileHover={{ scale: 1.1, backgroundColor: "rgba(0,0,0,0.3)" }}
+            whileHover={{ scale: 1.1, backgroundColor: 'rgba(0,0,0,0.3)' }}
             whileTap={{ scale: 0.9 }}
           >
             <AnimatePresence mode="wait">
@@ -174,20 +176,26 @@ export const Header = () => {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-black/95 backdrop-blur-md border-t border-cyan-400/20 text-cyan-200 overflow-hidden"
           >
-            <motion.div 
+            <motion.div
               className="px-6 py-5 space-y-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              {['home', 'AI', 'Web Development', 'App Development', 'Software Development'].map((item, idx) => (
+              {[
+                { label: 'Home', path: '/' },
+                { label: 'AI Development', path: '/ai' },
+                { label: 'Web Development', path: '/web' },
+                { label: 'App Development', path: '/appde' },
+                { label: 'Software Development', path: '/soft' },
+              ].map((item, idx) => (
                 <motion.a
                   key={idx}
-                  href={`/${item.toLowerCase().replace(' ', '').replace('development', '')}`}
+                  href={item.path}
                   className="block py-2 hover:text-cyan-400 transition"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ x: -20, opacity: 0 }}
@@ -195,7 +203,7 @@ export const Header = () => {
                   transition={{ delay: 0.3 + idx * 0.1 }}
                   whileHover={{ x: 5 }}
                 >
-                  {capitalizeFirst(item)}
+                  {item.label}
                 </motion.a>
               ))}
 
@@ -206,9 +214,9 @@ export const Header = () => {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 0 15px rgba(34, 211, 238, 0.5)"
+                  boxShadow: '0 0 15px rgba(34, 211, 238, 0.5)',
                 }}
               >
                 Get a Quote

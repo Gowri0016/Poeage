@@ -4,7 +4,7 @@ import Footer from './Footer';
 import { motion } from 'framer-motion';
 import {
   FaBrain, FaRobot, FaCloud, FaCogs, FaLock, FaEye,
-  FaChartLine, FaNetworkWired, FaSearch, FaMicrochip, FaUserSecret, FaRocket
+  FaChartLine, FaNetworkWired, FaSearch, FaMicrochip, FaUserSecret, FaRocket, FaLaptopCode
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,84 +35,26 @@ export default function Soft() {
   return (
     <>
       <Header />
-      <div className="relative min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 overflow-hidden">
-        
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-blue-200 opacity-20"
-              style={{
-                width: Math.random() * 200 + 100,
-                height: Math.random() * 200 + 100,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, Math.random() * 40 - 20, 0],
-                x: [0, Math.random() * 40 - 20, 0],
-                scale: [1, 1 + Math.random() * 0.3, 1],
-              }}
-              transition={{
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
 
-        <div className="relative z-10 py-20 px-4 sm:px-8 lg:px-16 max-w-7xl mx-auto">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              Futuristic{' '}
-              <span className="relative">
-                <motion.span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600"
-                  animate={{ 
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] 
-                  }}
-                  transition={{ 
-                    duration: 5, 
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  style={{ 
-                    backgroundSize: '200% 100%' 
-                  }}
-                >
-                  AI Development
-                </motion.span>{' '}
-                Services
-              </span>
-            </motion.h1>
+        <div className="relative z-10  max-w-full mx-auto">
+              {/* Hero Section */}
+                 <motion.div
+                   initial={{ opacity: 0, y: 50 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ duration: 1 }}
+                   className="text-center py-24 px-6 sm:px-12 lg:px-24 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-b-3xl shadow-lg"
+                 >
+                   <FaBrain className="w-20 h-20 mx-auto mb-4" />
+                   <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+                     AI Development Services
+                   </h1>
+                   <p className="text-lg md:text-xl max-w-3xl mx-auto">
+                     Build fast, secure, and high-performing websites that captivate users and drive business results with cutting-edge web solutions.
+                   </p>
+  
             
-            <motion.div
-              className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6"
-              initial={{ width: 0 }}
-              animate={isVisible ? { width: 96 } : {}}
-              transition={{ duration: 0.7, delay: 0.4 }}
-            />
+           
             
-            <motion.p
-              className="max-w-3xl mx-auto text-gray-700 text-lg md:text-xl"
-              initial={{ opacity: 0 }}
-              animate={isVisible ? { opacity: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.6 }}
-            >
-              Unlock the potential of artificial intelligence with cutting-edge solutions designed to propel your business into the future.
-            </motion.p>
           </motion.div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -189,7 +131,7 @@ export default function Soft() {
             </motion.button>
           </motion.div>
         </div>
-      </div>
+
       <Footer />
     </>
   );
