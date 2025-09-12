@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import emailjs from "emailjs-com";
 import { useLocation } from "react-router-dom";
-import { Header } from "./Header";
 import { FaEnvelopeOpenText, FaPaperPlane, FaLightbulb, FaUser, FaPhone, FaComments } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import Header from "./Header";
 
 const Getquotes = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -64,7 +64,7 @@ const Getquotes = () => {
 
   return (
     <>
-      <Header />
+    <Header />
       <div ref={formRef} className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center px-4 md:px-6 py-10 md:py-12 relative overflow-hidden text-white">
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 z-10">
           {/* Left Section */}

@@ -1,108 +1,87 @@
-import React from 'react';
+import React, { useState } from "react";
 import { motion } from 'framer-motion';
-import hubImage from '../../assests/1.png';
-import webImage from '../../assests/3.png';
-import buildersImage from '../../assests/5.png';
-import itImage from '../../assests/6.png';
+import Sql from '../../assests/MySql.png';
+import Php from '../../assests/PHP.png';
 
-export default function Groups() {
-  const companies = [
-    {
-      title: 'Poeage IT Solution',
-      desc: 'Innovative IT solutions that transform businesses through technology-driven strategies.',
-      img: itImage,
-      link: 'https://poeage-it-solution.vercel.app/',
-      theme: 'from-blue-400 to-indigo-500'
-    },
-    {
-      title: "Poeage Builder's",
-      desc: 'Building the future with modern, sustainable, and innovative construction projects.',
-      img: buildersImage,
-      link: 'https://poeageitsolution.vercel.app/',
-      theme: 'from-green-400 to-emerald-500'
-    },
-    {
-      title: 'Poeage Hub',
-      desc: 'A central hub fostering collaboration, creativity, and innovation across industries.',
-      img: hubImage,
-      link: 'https://poeage-hub.vercel.app/',
-      theme: 'from-pink-400 to-rose-500'
-    },
-    {
-      title: 'Poeage Web Services',
-      desc: 'Delivering cutting-edge web development, cloud integration, and scalable digital solutions.',
-      img: webImage,
-      link: 'https://pws-rouge-five.vercel.app/',
-      theme: 'from-yellow-400 to-orange-500'
-    },
-  ];
+const TechStackAndGroups = () => {
+  const categories = ["Backend", "Frontend", "Databases", "CMS", "Cloud/Testing", "DevOps"];
+  const [active, setActive] = useState("Backend");
+
+  const techStacks = {
+    Backend: [
+      { name: "Node.js", logo: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" },
+      { name: "PHP", logo: Php },
+      { name: "MySQL", logo: Sql },
+      { name: "Java", logo: "https://cdn.worldvectorlogo.com/logos/java-4.svg" },
+      { name: ".NET", logo: "https://cdn.worldvectorlogo.com/logos/dot-net-core-7.svg" },
+      { name: "Python", logo: "https://cdn.worldvectorlogo.com/logos/python-5.svg" },
+      { name: "Rails", logo: "https://cdn.worldvectorlogo.com/logos/rails-1.svg" },
+      { name: "Golang", logo: "https://cdn.worldvectorlogo.com/logos/go-8.svg" },
+      { name: "MongoDB", logo: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
+    ],
+    Frontend: [
+      { name: "React", logo: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+      { name: "Angular", logo: "https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" },
+      { name: "Vue.js", logo: "https://cdn.worldvectorlogo.com/logos/vue-9.svg" },
+    ],
+    Databases: [
+      { name: "MySQL", logo: Sql },
+      { name: "PostgreSQL", logo: "https://cdn.worldvectorlogo.com/logos/postgresql.svg" },
+      { name: "Redis", logo: "https://cdn.worldvectorlogo.com/logos/redis.svg" },
+      { name: "MongoDB", logo: "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" },
+    ],
+    CMS: [
+      { name: "WordPress", logo: "https://cdn.worldvectorlogo.com/logos/wordpress-icon.svg" },
+      { name: "Drupal", logo: "https://cdn.worldvectorlogo.com/logos/drupal.svg" },
+    ],
+    "Cloud/Testing": [
+      { name: "AWS", logo: "https://cdn.worldvectorlogo.com/logos/aws-2.svg" },
+      { name: "Jest", logo: "https://cdn.worldvectorlogo.com/logos/jest-2.svg" },
+    ],
+    DevOps: [
+      { name: "Docker", logo: "https://cdn.worldvectorlogo.com/logos/docker.svg" },
+      { name: "Jenkins", logo: "https://cdn.worldvectorlogo.com/logos/jenkins-1.svg" },
+    ],
+  };
+
+ 
+
+  const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
   return (
-    <div className="mt-20 bg-gradient-to-br from-gray-50 to-gray-200 py-14 px-4 md:px-10 lg:px-20 overflow-hidden">
-      {/* Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: -40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="text-2xl md:text-4xl lg:text-5xl font-light text-center mb-12 md:mb-16 text-slate-900"
-      >
-        Our Group of Companies
-      </motion.h2>
+    <div className="flex flex-col gap-20 md:gap-32 px-4 md:px-10 mt-32 lg:px-20">
+    
 
-      {/* Company Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
-        {companies.map((branch, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2, type: 'spring', stiffness: 80 }}
-            viewport={{ once: true }}
-            className="relative group p-6 md:p-8 bg-white rounded-2xl shadow-lg flex flex-col items-center text-center gap-4 hover:shadow-2xl"
-          >
-            {/* Background animation */}
-            <motion.div
-              className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${branch.theme} opacity-0 group-hover:opacity-20 blur-2xl`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.15, 0] }}
-              transition={{ repeat: Infinity, duration: 5 }}
-            />
+      {/* Tech Stack Section */}
+      <section className="py-16 bg-white text-center rounded-xl shadow-lg">
+        <div className="container mx-auto px-4 md:px-0">
+          <motion.h2 initial="hidden" whileInView="visible" variants={fadeUp} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-2xl font-semibold text-gray-800 mb-2">
+            Our
+          </motion.h2>
+          <motion.h3 initial="hidden" whileInView="visible" variants={fadeUp} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true }} className="text-3xl font-bold text-gray-900 mb-8">
+            Tech Stack
+          </motion.h3>
 
-            {/* Company Image */}
-            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 1 }} className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden shadow-md relative z-10">
-              <img src={branch.img} alt={branch.title} className="w-full h-full object-cover" />
-            </motion.div>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
+            {categories.map((cat, idx) => (
+              <motion.button key={idx} onClick={() => setActive(cat)} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className={`pb-1 text-sm md:text-base font-medium border-b-2 transition-colors ${active === cat ? "border-purple-600 text-purple-600" : "border-transparent text-gray-500 hover:text-purple-600"}`}>
+                {cat}
+              </motion.button>
+            ))}
+          </div>
 
-            {/* Title */}
-            <h3 className="text-base md:text-lg lg:text-xl font-bold tracking-wide text-slate-800 relative z-10">
-              {branch.title}
-            </h3>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-gray-600 text-sm md:text-base leading-relaxed relative z-10"
-            >
-              {branch.desc}
-            </motion.p>
-
-            {/* Button */}
-            <motion.a
-              href={branch.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-3 md:mt-4 cursor-pointer px-3 py-2 md:px-4 md:py-2 bg-indigo-500 text-white rounded-full shadow hover:bg-indigo-600 transition relative z-10 text-sm md:text-base"
-            >
-              Visit Website
-            </motion.a>
-          </motion.div>
-        ))}
-      </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 items-center justify-items-center">
+            {techStacks[active].map((tech, idx) => (
+              <motion.div key={idx} whileHover={{ scale: 1.1, y: -5 }} transition={{ type: 'spring', stiffness: 100 }} className="flex flex-col items-center space-y-2">
+                <img src={tech.logo} alt={tech.name} className="h-12 md:h-14 object-contain" />
+                <span className="text-sm md:text-base text-gray-700 font-medium">{tech.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default TechStackAndGroups;

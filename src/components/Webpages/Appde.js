@@ -1,108 +1,118 @@
 import React from 'react';
-import { Header } from './Header';
+import Header from './Header';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
-import {
-  FaMobileAlt, FaBrain, FaCloud, FaShieldAlt, FaRobot, FaChartLine,
-  FaMicrochip, FaDatabase, FaLanguage, FaCogs,
-} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { FaMobileAlt, FaTabletAlt, FaRocket, FaCogs, FaCloud } from 'react-icons/fa';
 
-export default function AIService() {
+export default function AppDevelopment() {
   const navigate = useNavigate();
 
   const services = [
     {
-      title: "AI Development Services",
-      items: [
-        { icon: <FaBrain />, title: "Machine Learning Models", desc: "Custom ML models for prediction, automation, and insights." },
-        { icon: <FaRobot />, title: "Intelligent Chatbots", desc: "AI-powered bots for customer support, sales, and automation." },
-        { icon: <FaLanguage />, title: "Natural Language Processing", desc: "Enable systems to understand, process, and generate human language." },
-        { icon: <FaCloud />, title: "AI Cloud Integration", desc: "Scalable cloud-based AI infrastructure and deployment." },
-        { icon: <FaShieldAlt />, title: "AI Security Solutions", desc: "Protect AI systems with robust data security and compliance." },
-        { icon: <FaDatabase />, title: "Big Data Analytics", desc: "AI-driven data analysis to uncover trends and insights." },
-        { icon: <FaChartLine />, title: "Predictive Analytics", desc: "Forecast business trends and customer behavior with precision." },
-        { icon: <FaMicrochip />, title: "IoT & AI Integration", desc: "Smart IoT solutions powered by AI for real-time decision-making." },
-        { icon: <FaCogs />, title: "AI Consulting & Strategy", desc: "Tailored AI adoption strategies for businesses." },
-      ]
-    }
+      icon: <FaMobileAlt />,
+      title: "iOS App Development",
+      desc: "Design and build high-performance iOS applications for iPhone and iPad.",
+      img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      icon: <FaTabletAlt />,
+      title: "Android App Development",
+      desc: "Develop responsive and scalable Android apps for diverse devices.",
+      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      icon: <FaRocket />,
+      title: "Cross-Platform Apps",
+      desc: "Build apps that work seamlessly across iOS, Android, and web platforms.",
+      img: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      icon: <FaCogs />,
+      title: "Enterprise Applications",
+      desc: "Robust enterprise apps for workflow automation and management.",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNqv8efftEpJecTekX0TF2RYJLpcffWTj_TFZNxCKB3WyVK4g-9Z5w1H99iX46NbHR40g&usqp=CAU"
+    },
+    {
+      icon: <FaCloud />,
+      title: "App Maintenance & Support",
+      desc: "Ongoing support, updates, and performance monitoring for your apps.",
+      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+    },
   ];
 
   return (
     <>
       <Header />
-      <div className="bg-gradient-to-b from-gray-50 via-white to-gray-50 min-h-screen">
 
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center py-24 px-6 sm:px-12 lg:px-24 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-b-3xl shadow-lg"
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-center py-20 md:py-28 px-6 sm:px-12 lg:px-24 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-b-3xl shadow-lg"
+      >
+        <FaMobileAlt className="w-16 md:w-20 h-16 md:h-20 mx-auto mb-4" />
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+          Application Development Services
+        </h1>
+        <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto">
+          Explore our 5 unique application development services including iOS, Android, Cross-Platform, Enterprise, and App Support.
+        </p>
+        <button
+          onClick={() => navigate('/contact')}
+          className="mt-4 md:mt-6 px-6 md:px-8 py-2 md:py-3 rounded-full text-sm sm:text-base md:text-lg font-semibold text-white bg-black hover:bg-gray-800 shadow-md"
         >
-          <FaMobileAlt className="w-20 h-20 mx-auto mb-4" />
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
-            App Development Services
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto">
-            Empower your business with cutting-edge mobile and web applications designed to enhance user experience and drive growth.
-          </p>
-        </motion.div>
+          Contact Us
+        </button>
+      </motion.div>
 
-        {/* Services Section */}
-        <div className="mt-16 px-6 md:px-12 lg:px-24 grid gap-12">
-          {services.map((section, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: idx * 0.2 }}
-              viewport={{ once: true }}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {section.items.map((feature, index) => (
-                <div key={index} className="flex flex-col items-center text-center p-8 bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-transform transform hover:-translate-y-2 hover:scale-105">
-                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-2xl shadow-md mb-4">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
-                  <p className="text-gray-500 mb-4">{feature.desc}</p>
-                  <button
-                    onClick={() => navigate('/quotes')}
-                    className="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-300"
-                  >
-                    Get Quote
-                  </button>
-                </div>
-              ))}
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Call To Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl p-12 mx-6 md:mx-24 mt-24 text-center text-white shadow-xl hover:shadow-2xl transition-transform transform hover:-translate-y-2"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-            Ready to Transform Your Business with App?
-          </h2>
-          <p className="max-w-2xl mx-auto mb-6">
-            Let's collaborate to create innovative applications that drive success and deliver exceptional user experiences.
-
-          </p>
-          <button
-            onClick={() => navigate('/contact')}
-            className="px-8 py-3 font-semibold bg-white text-blue-800 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow"
+      {/* Services Section */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + index * 0.1, duration: 0.6 }}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition"
           >
-            Contact Us
-          </button>
-        </motion.div>
-
+            <img src={service.img} alt={service.title} className="w-full h-48 object-cover" />
+            <div className="p-6">
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-500 text-2xl mb-4">
+                {service.icon}
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {service.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                {service.desc}
+              </p>
+              <button
+                onClick={() => navigate('/quotes')}
+                className="px-4 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-green-500 to-teal-500 hover:from-teal-500 hover:to-green-500 shadow-md"
+              >
+                Continue
+              </button>
+            </div>
+          </motion.div>
+        ))}
       </div>
+
+      {/* Call to Action Section */}
+      <div className="bg-gray-100 py-12 md:py-16 text-center px-4 sm:px-6 md:px-8">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
+          Turn Your App Idea into Reality
+        </h2>
+        <button
+          onClick={() => navigate('/contact')}
+          className="px-6 md:px-8 py-2 md:py-3 rounded-full text-sm sm:text-base md:text-lg font-semibold text-white bg-gradient-to-r from-green-500 to-teal-500 hover:from-teal-600 hover:to-green-600 shadow-lg"
+        >
+          Contact Us
+        </button>
+      </div>
+
       <Footer />
     </>
   );
