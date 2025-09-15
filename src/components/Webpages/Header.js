@@ -12,7 +12,7 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-2">
          <a href='/' ><img src={Logo} alt="Poeage Logo" className="w-36" /> </a>
-          <span className="font-[cursive] text-lg text-gray-800">It developers</span>
+          <span className="font-[cursive] text-lg text-gray-800">IT Developers</span>
         </div>
 
         {/* Desktop Nav Links */}
