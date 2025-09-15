@@ -85,7 +85,7 @@ const fadeInUp = {
 export default function Services() {
   return (
     <>
-      <section className="py-12 bg-[#fafafe] md:px-6 px-4">
+      <section className="py-12 bg-white md:px-6 px-4">
         <motion.div
           initial="hidden"
           whileInView="show"

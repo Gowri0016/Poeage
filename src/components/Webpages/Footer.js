@@ -55,7 +55,7 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer className="bg-white text-gray-700 py-12 border-t border-gray-200">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-12">
         {/* Logo & Intro */}
         <div className="text-center md:text-left">
           <img
@@ -119,8 +119,10 @@ const Footer = () => {
               </li>
             ))}
           </ul>
+          </div>
 
-          <h4 className="font-semibold mb-4">Contact Us</h4>
+          <div className="text-center md:text-left">
+          <h4 className="font-semibold mb-4">Support</h4>
           <a
             href="tel:+918056889616"
             className="block text-sm text-cyan-600 font-medium"
