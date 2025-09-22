@@ -19,7 +19,6 @@ const services = [
 
 const quickLinks = [
   { name: "About Us", path: "/aboutus" },
-  { name: "Services", path: "/services" },
   { name: "Case Studies", path: "/case-studies" },
   { name: "How It Works", path: "/how-it-works" },
   { name: "Blog", path: "/blog" },

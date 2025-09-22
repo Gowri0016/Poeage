@@ -11,7 +11,6 @@ import Appde from './Webpages/Appde';
 import Soft from './Webpages/Soft';
 import Cloud from './Webpages/Cloud'; 
 import { Group } from 'lucide-react';
-import Serve from './Webpages/Serve';
 import Case from './Webpages/Case';
 import Blog from './Webpages/Bolg';
 import Work from './Webpages/Work';
@@ -38,7 +37,6 @@ export const Storage = () => {
         <Route path='/soft' element={<Soft />} ></Route>
         <Route path='/groups' element={<Group />} ></Route>
         <Route path='/cloud' element={<Cloud />} ></Route>
-        <Route path='/services' element={<Serve />} ></Route>
         <Route path='/case-studies' element={<Case />} ></Route>
         <Route path='/blog' element={<Blog />} ></Route>
         <Route path='/how-it-works' element={<Work />} ></Route>

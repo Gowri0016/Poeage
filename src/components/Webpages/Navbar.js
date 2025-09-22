@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 import Header from './Header';
 import Home from './Home';
-import Services from './Services';
 import Footer from './Footer';
 import Groups from './Groups';
 
@@ -48,10 +47,6 @@ export const Navbar = () => {
 
         <motion.div className="w-full" variants={fadeInUp}>
           <Home />
-        </motion.div>
-
-        <motion.div className="w-full" variants={fadeInUp}>
-          <Services />
         </motion.div>
 
 

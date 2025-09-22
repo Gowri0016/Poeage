@@ -18,10 +18,9 @@ export default function Header() {
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center gap-8">
           <a href="/aboutus" className="text-gray-700 font-medium hover:text-blue-600 transition">About us</a>
-          <a href="/services" className="text-gray-700 font-medium hover:text-blue-600 transition">Services</a>
           <a href="/case-studies" className="text-gray-700 font-medium hover:text-blue-600 transition">Case Studies</a>
           <a href="/blog" className="text-gray-700 font-medium hover:text-blue-600 transition">Blog</a>
-          <a href="/works" className="text-gray-700 font-medium hover:text-blue-600 transition">How it Works</a>
+          <a href="/work" className="text-gray-700 font-medium hover:text-blue-600 transition">How it Works</a>
           <a href="/hire" className="text-gray-700 font-medium hover:text-blue-600 transition">Hire</a>
           <a
             href="/contact"
@@ -44,10 +43,9 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-4 mt-3 px-4 pb-4 bg-white shadow-md rounded-md">
           <a href="/aboutus" className="text-gray-700 font-medium hover:text-blue-600 transition">About us</a>
-          <a href="/services" className="text-gray-700 font-medium hover:text-blue-600 transition">Services</a>
           <a href="/case-studies" className="text-gray-700 font-medium hover:text-blue-600 transition">Case Studies</a>
           <a href="/blog" className="text-gray-700 font-medium hover:text-blue-600 transition">Blog</a>
-          <a href="/how-it-works" className="text-gray-700 font-medium hover:text-blue-600 transition">How it Works</a>
+          <a href="/work" className="text-gray-700 font-medium hover:text-blue-600 transition">How it Works</a>
           <a href="/hire" className="text-gray-700 font-medium hover:text-blue-600 transition">Hire</a>
           <a
             href="/contact"
