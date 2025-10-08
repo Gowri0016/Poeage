@@ -128,6 +128,7 @@ const Footer = () => {
           >
             +91 805-688-9616
           </a>
+          <p className="text-center md:text-left">36A, Main Road, Ayyamplayam <br /> Kavundhapadi, Erode </p>
           <div className="flex justify-center md:justify-start space-x-4 mt-4">
             {socialLinks.map(({ Icon, href, color }, idx) => (
               <a

@@ -23,7 +23,7 @@ export default function Term() {
 
         <h2 className="text-xl font-semibold mt-8 mb-2">Your Use of the Website if You Are Under 18</h2>
         <p className="mb-4">
-          If you are under 18, you may need your parent/guardian to help you with your use of the Website and the App and with reading these Terms and Conditions. If anything is hard to understand, please ask your parent/guardian to explain. If you still have any questions, you or your parent/guardian can contact us at: <strong>[Insert Company Contact Email]</strong>.
+          If you are under 18, you may need your parent/guardian to help you with your use of the Website and the App and with reading these Terms and Conditions. If anything is hard to understand, please ask your parent/guardian to explain. If you still have any questions, you or your parent/guardian can contact us at: <strong>[info@poeage.com]</strong>.
         </p>
         <p className="mb-4">
           If you are aged 13 or under, you cannot register for a Poeage Technology account ("Account") without the permission of your parent/guardian. You need to register if you want to use certain services or features. You do not need to register to use the Website or App.
@@ -31,7 +31,7 @@ export default function Term() {
 
         <h2 className="text-xl font-semibold mt-8 mb-2">Data & Privacy</h2>
         <p className="mb-4">
-          We may collect your personal information when you use the Website and the App. You can find out more about how we use your personal information in our Privacy Policy, which can be accessed here: <strong>[Insert Privacy Policy Link]</strong>.
+          We may collect your personal information when you use the Website and the App. You can find out more about how we use your personal information in our Privacy Policy, which can be accessed here: <strong>[@poeage_technology]</strong>.
         </p>
 
         <h2 className="text-xl font-semibold mt-8 mb-2">Acceptable Use</h2>

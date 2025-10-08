@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Leg from '../../assests/Legenadary.png';
 import Herito from '../../assests/Herito.png';
 import ASE from '../../assests/ASE protact.png';
+import Sabari from '../../assests/Screenshot 2025-10-08 at 2.33.19 PM.png';
 
 export default function Case() {
   const steps = [
@@ -33,7 +34,7 @@ export default function Case() {
       id: 4,
       title: "Testing & Delivery",
       desc: "Our team performs rigorous testing, ensuring responsiveness, accessibility, and flawless functionality before launch.",
-      image: "https://poeage-portfolio.vercel.app/static/media/Sabaris.b7fdae47accca7b4a3b5.png",
+      image: Sabari,
       link: "https://sabaricars.com",
     },
   ];
