@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import HeroImg from "../../assests/hero.png"; // replace with your illustration image
+import HeroImg from "../../assests/hero.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FaArrowRight, FaArrowLeft, FaMobileAlt, FaCode, FaBug, FaCogs } from "react-icons/fa";
+import { FaArrowRight, FaArrowLeft, FaGlobe, FaCode, FaRobot, FaCloud } from "react-icons/fa";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,77 +11,67 @@ import "swiper/css/pagination";
 
 const services = [
   {
-    title: "Mobile App Development",
+    title: "AI-Powered Automation",
     description:
-      "We build high-performance, cross-platform mobile apps that scale with your business and engage users effectively.",
-    icon: <FaMobileAlt className="w-8 h-8 md:w-12 md:h-12 text-pink-500" />,
+      "Integrating intelligent automation with AI to revolutionize workflows and boost operational efficiency.",
+    icon: <FaRobot className="w-10 h-10 text-cyan-400 drop-shadow-lg" />,
   },
   {
-    title: "Web Design & Development",
+    title: "Modern Web Experiences",
     description:
-      "Crafting modern, responsive, and fast websites tailored to represent your brand and convert visitors into customers.",
-    icon: <FaCode className="w-8 h-8 md:w-12 md:h-12 text-pink-500" />,
+      "Building sleek, high-performance websites that tell your brand story and engage global audiences.",
+    icon: <FaGlobe className="w-10 h-10 text-cyan-400 drop-shadow-lg" />,
   },
   {
-    title: "Software Testing Service",
+    title: "Custom Cloud Architecture",
     description:
-      "Ensuring bug-free, secure, and efficient applications with our advanced software testing and QA solutions.",
-    icon: <FaBug className="w-8 h-8 md:w-12 md:h-12 text-pink-500" />,
+      "Designing scalable cloud infrastructure to ensure seamless integration and top-tier reliability.",
+    icon: <FaCloud className="w-10 h-10 text-cyan-400 drop-shadow-lg" />,
   },
   {
-    title: "Custom Software Solutions",
+    title: "Full-Stack Engineering",
     description:
-      "Delivering tailor-made software solutions to optimize business workflows, enhance productivity, and ensure growth.",
-    icon: <FaCogs className="w-8 h-8 md:w-12 md:h-12 text-pink-500" />,
+      "Delivering robust, end-to-end solutions across web, mobile, and enterprise environments.",
+    icon: <FaCode className="w-10 h-10 text-cyan-400 drop-shadow-lg" />,
   },
 ];
 
 const sections = [
   {
-    title: "Trusted by Leading Companies",
-    highlight: "to build future-ready software",
+    title: "Innovate with Poeage",
+    highlight: "Turning Ideas into Reality",
     description:
-      "At Poeage Technology, we empower businesses by extending their development capacity, ensuring innovation and quality across every project lifecycle.",
-    link: "Discover More",
+      "We fuse creativity, technology, and strategy to help brands build future-proof digital ecosystems.",
+    link: "Explore Our Vision",
     image:
-      "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Meet the People",
-    highlight: "We Collaborate With",
+    title: "Collaborate Globally",
+    highlight: "Empowering Teams Worldwide",
     description:
-      "Our team works closely with global clients, building partnerships that drive innovation, efficiency, and business growth.",
-    link: "Meet Our Team",
+      "From startups to enterprises, Poeage partners with organizations across continents to scale innovation.",
+    link: "Join Our Network",
     image:
-      "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Innovative Solutions",
-    highlight: "That Scale Globally",
+    title: "Beyond Technology",
+    highlight: "Creating Meaningful Impact",
     description:
-      "We design solutions that adapt and scale seamlessly, helping startups and enterprises stay ahead in the digital era.",
-    link: "Explore Solutions",
+      "We don’t just build solutions — we shape digital experiences that drive transformation.",
+    link: "See How We Work",
     image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Your Success, Our Goal",
-    highlight: "Partner With Poeage",
-    description:
-      "We are committed to shaping your long-term success by delivering cutting-edge IT solutions tailored for your business.",
-    link: "Get Started Today",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+      "https://media.gettyimages.com/id/1556389414/video/man-using-a-laptop-double-exposure-with-business-data-analytics-dashboard.jpg?s=640x640&k=20&c=dG7--W8MQuUsuVTaYg7kplrnAkNUoeH6u02Nn_SCwfE=",
   },
 ];
 
-// Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 60 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
-export default function HomeServicesMerged() {
+export default function HomeServicesUnique() {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -93,201 +83,142 @@ export default function HomeServicesMerged() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-white min-h-screen flex items-center justify-center px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          {/* Left Content */}
+      <section className="relative bg-gradient-to-br from-cyan-100 via-white to-blue-100 min-h-screen flex items-center px-6 md:px-16 overflow-hidden">
+        <motion.div
+          className="absolute top-0 left-0 w-96 h-96 bg-cyan-200 rounded-full blur-[120px] opacity-30 animate-pulse"
+        ></motion.div>
+        <motion.div
+          className="absolute bottom-0 right-0 w-80 h-80 bg-blue-200 rounded-full blur-[100px] opacity-25 animate-pulse"
+        ></motion.div>
+
+        <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -60 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
+            className="space-y-8"
           >
-            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight">
-              Great <span className="text-cyan-600">Product</span> is <br />
-              <span className="font-extrabold">
-                built by great <span className="text-cyan-600">teams</span>
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-snug">
+              Transform <span className="text-cyan-600">Ideas</span> into <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">
+                Digital Reality
               </span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-lg">
-              We help build and manage a team of world-class developers to bring your vision to life.
+            <p className="text-lg text-gray-700 max-w-md">
+              Poeage Technology crafts intelligent digital solutions that empower businesses to innovate and thrive globally.
             </p>
             <motion.button
               onClick={() => navigate("/quotes")}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-md font-medium shadow-md hover:opacity-90 transition"
-              whileHover={{ scale: 1.05, y: -2 }}
+              className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-500 text-white rounded-full font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition"
+              whileHover={{ y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
-              Let’s get started!
+              Get a Free Quote
             </motion.button>
           </motion.div>
 
-          {/* Right Illustration */}
           <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
             className="flex justify-center"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <img src={HeroImg} alt="Team working illustration" className="w-full max-w-md md:max-w-xl" />
+            <img
+              src={HeroImg}
+              alt="Hero"
+              className="w-full max-w-lg drop-shadow-3xl hover:scale-105 transition-transform duration-700"
+            />
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-10 bg-white px-5 md:px-10">
+      {/* Services Carousel */}
+      <section className="py-20 bg-white relative overflow-hidden">
         <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="text-center mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 relative z-10"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900">Services we offer</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Our <span className="text-cyan-600">Expertise</span>
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            We deliver world-class software solutions crafted with innovation, scalability, and precision.
+          </p>
         </motion.div>
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={24}
+          spaceBetween={30}
           slidesPerView={1}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          centeredSlides={false}
+          breakpoints={{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
           pagination={{ clickable: true }}
-          navigation={false}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={true}
+          autoplay={{ delay: 3500, disableOnInteraction: false }}
+          loop
           className="max-w-6xl mx-auto"
         >
-          {services.map((service, index) => (
-            <SwiperSlide key={index}>
-              {({ isActive }) => (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className={`p-6 rounded-xl shadow-md transition-all duration-300 flex flex-col items-center text-center h-full ${
-                    isActive ? "bg-white border border-pink-200" : "bg-gray-50"
-                  }`}
-                >
-                  <div className="mb-4">{service.icon}</div>
-                  <h3
-                    className={`text-lg md:text-2xl font-semibold mb-3 ${
-                      isActive ? "text-pink-600" : "text-gray-800"
-                    }`}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                    {service.description}
-                  </p>
-                </motion.div>
-              )}
+          {services.map((service, i) => (
+            <SwiperSlide key={i}>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-gradient-to-br from-white via-cyan-50 to-blue-50 border border-cyan-100 rounded-3xl p-10 shadow-md hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 text-center backdrop-blur-md"
+              >
+                <div className="flex justify-center mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
       </section>
 
-      {/* Informational Sections with Zigzag Layout */}
-      <section className="py-12 bg-white max-w-7xl mx-auto px-5 md:px-10">
-        {sections.map((sec, index) => (
+      {/* Zigzag Parallax Info Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-cyan-50 px-6 md:px-10">
+        {sections.map((sec, i) => (
           <motion.div
-            key={index}
+            key={i}
+            variants={fadeInUp}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            variants={fadeInUp}
-            className="grid md:grid-cols-2 gap-10 items-center mb-16"
+            className={`grid md:grid-cols-2 gap-12 items-center mb-20 ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
           >
-            {index % 2 === 0 ? (
-              <>
-                {/* Image Left */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative order-1"
-                >
-                  <img
-                    src={sec.image}
-                    alt={sec.title}
-                    className="rounded-xl shadow-lg w-full h-64 md:h-96 object-cover"
-                  />
-                </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="relative group overflow-hidden rounded-2xl shadow-xl"
+            >
+              <img
+                src={sec.image}
+                alt={sec.title}
+                className="rounded-2xl w-full h-72 md:h-96 object-cover transform group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl"></div>
+            </motion.div>
 
-                {/* Text Right */}
-                <div className="order-2">
-                  <div className="h-1 w-12 bg-pink-600 mb-4"></div>
-                  <h2 className="text-xl md:text-4xl font-bold mb-4">
-                    {sec.title} <br />
-                    <span className="text-gray-900 font-extrabold">
-                      {sec.highlight}
-                    </span>
-                  </h2>
-                  <p className="text-gray-600 mb-5 text-sm md:text-lg leading-relaxed">
-                    {sec.description}
-                  </p>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 text-pink-600 font-medium hover:underline text-sm md:text-lg"
-                  >
-                    {sec.link} <FaArrowRight />
-                  </a>
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Text Left */}
-                <div className="order-2 md:order-1">
-                  <div className="h-1 w-12 bg-pink-600 mb-4"></div>
-                  <h2 className="text-xl md:text-4xl font-bold mb-4">
-                    {sec.title} <br />
-                    <span className="text-gray-900 font-extrabold">
-                      {sec.highlight}
-                    </span>
-                  </h2>
-                  <p className="text-gray-600 mb-5 text-sm md:text-lg leading-relaxed">
-                    {sec.description}
-                  </p>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 text-pink-600 font-medium hover:underline text-sm md:text-lg"
-                  >
-                    {sec.link} <FaArrowRight />
-                  </a>
-                </div>
-
-                {/* Image Right */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative order-1 md:order-2"
-                >
-                  <img
-                    src={sec.image}
-                    alt={sec.title}
-                    className="rounded-xl shadow-lg w-full h-64 md:h-96 object-cover"
-                  />
-                </motion.div>
-              </>
-            )}
+            <div className="space-y-5">
+              <h3 className="text-3xl font-bold text-gray-900 leading-snug">
+                {sec.title} <br />
+                <span className="text-cyan-600">{sec.highlight}</span>
+              </h3>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                {sec.description}
+              </p>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 text-cyan-600 font-medium hover:gap-3 transition-all duration-300"
+              >
+                {sec.link} <FaArrowRight />
+              </a>
+            </div>
           </motion.div>
         ))}
-
-        {/* Bottom Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center md:justify-end gap-4 mt-8"
-        >
-          <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition">
-            <FaArrowLeft />
-          </button>
-          <button className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition">
-            <FaArrowRight />
-          </button>
-        </motion.div>
       </section>
     </>
   );

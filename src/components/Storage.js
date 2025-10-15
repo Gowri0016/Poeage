@@ -20,6 +20,7 @@ import Helpcenter from './Webpages/Helpcenter';
 import Term from './Webpages/Term-Condition';
 import Privacypolicy from './Webpages/Privacypolicy';
 import OurCompany from './Webpages/OurCompany';
+import Serve from './Webpages/Serve';
 
 
 
@@ -48,6 +49,7 @@ export const Storage = () => {
         <Route path='/privacy' element={<Privacypolicy />} ></Route>
         <Route path='/work' element={<Work />} ></Route>
         <Route path='/our-company' element={<OurCompany />} ></Route>
+        <Route path='/serve' element={<Serve />} ></Route>
     </Routes>
     </>
   )
